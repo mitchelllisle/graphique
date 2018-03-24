@@ -1,13 +1,8 @@
-machine:
-  python:
-    version: 3.5.2
-
-dependencies:
-  override:
-    - pip install -r requirements.txt
-
-deployment:
-    master:
-        branch: master
-        commands:
-            - python setup.py sdist
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.2-stretch-browsers
+    steps:
+      - checkout
+      - run: pip install -r requirements.txt
