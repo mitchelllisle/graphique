@@ -19,9 +19,8 @@ jobs:
             echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
 
   deploy:
-    working_directory: ~/repo
     docker:
-      - image: blueflag/client-build:0.0.3
+      - image: circleci/python:3.6.2-stretch-browsers
 
     steps:
       - checkout
