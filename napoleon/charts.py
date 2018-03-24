@@ -7,7 +7,7 @@ def lineChart(data, x, y, color = None, title = "", subtitle = ""):
     chartType = "Line"
     barMode = None
 
-    if color is None:``
+    if color is None:
         color = ["#4791E5", "#F6A502", "#FB5A6E", "#1CB37D"]
 
     traces = generateTraces(chartType, data, x, y, color)
