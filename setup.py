@@ -35,7 +35,6 @@ class VerifyVersionCommand(install):
 setup(name='graphique',
       version=VERSION,
       description='A python package for making plotly simple to get up and running',
-      long_description=readme(),
       url='http://github.com/mitchelllisle/graphique',
       author='Mitchell Lisle',
       author_email='lislemitchell@gmail.com',
