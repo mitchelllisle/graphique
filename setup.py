@@ -11,7 +11,7 @@ from setuptools import setup
 from setuptools.command.install import install
 
 setup(name='napoleon',
-      version='0.15',
+      version='0.16',
       description='A python package for making plotly simple to get up and running',
       url='http://github.com/mitchelllisle/napoleon',
       author='Mitchell Lisle',
