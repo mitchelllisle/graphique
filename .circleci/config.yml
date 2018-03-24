@@ -18,36 +18,11 @@ jobs:
             - "venv"
             - "dist"
 
-  deploy:
-    docker:
-      - image: circleci/python:3.6.2-stretch-browsers
-
-    steps:
-      - checkout
-      - restore_cache:
-          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
-      - run: python setup.py sdist
-      - run:
-          name: init .pypirc
-          command: |
-            echo -e "[pypi]" >> ~/.pypirc
-            echo -e "username = mitchelllisle" >> ~/.pypirc
-            echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
-      - run:
-          name: upload to pypi
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            twine upload dist/*
-      - run: ls dist/
 workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+      - build:
           filters:
             branches:
               only: master
