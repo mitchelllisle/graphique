@@ -5,6 +5,8 @@ jobs:
       - image: circleci/python:3.6.2-stretch-browsers
     steps:
       - checkout
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:
           command: |
             python3 -m venv venv
@@ -17,6 +19,10 @@ jobs:
             echo -e "[pypi]" >> ~/.pypirc
             echo -e "username = mitchelllisle" >> ~/.pypirc
             echo -e "password = $PYPI_PASSWORD" >> ~/.pypirc
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
 
   deploy:
     docker:
@@ -24,6 +30,8 @@ jobs:
 
     steps:
       - checkout
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:
           name: upload to pypi
           command: |
