@@ -20,11 +20,9 @@ jobs:
 
     steps:
       - checkout
-      run:
+      - run:
           name: upload to pypi
-          command: |
-            . venv/bin/activate
-            twine upload dist/*
+          command: twine upload dist/*
 workflows:
   version: 2
   build_and_deploy:
