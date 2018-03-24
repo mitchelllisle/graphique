@@ -10,14 +10,14 @@ import sys
 from setuptools import setup
 from setuptools.command.install import install
 
-setup(name='graphique',
-      version='0.14',
+setup(name='napoleon',
+      version='0.15',
       description='A python package for making plotly simple to get up and running',
-      url='http://github.com/mitchelllisle/graphique',
+      url='http://github.com/mitchelllisle/napoleon',
       author='Mitchell Lisle',
       author_email='lislemitchell@gmail.com',
       license='MIT',
-      packages=['graphique'],
+      packages=['napoleon'],
       zip_safe=False,
       python_requires='>=3'
 )
