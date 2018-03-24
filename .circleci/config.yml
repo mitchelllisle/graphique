@@ -12,6 +12,11 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             pip install -r requirements.txt
+      - run: if [ -d "dist" ]; then
+                rm -r dist
+            else
+                echo 'dist doesnt exist, creating...'
+            fi
       - run: python setup.py sdist
       - save_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
