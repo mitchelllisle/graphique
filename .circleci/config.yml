@@ -5,6 +5,7 @@ jobs:
       - image: circleci/python:3.6.2-stretch-browsers
     steps:
       - checkout
+      - run: pip install -r requirements.txt
       - run: python setup.py sdist
       - run:
           name: init .pypirc
