@@ -1,10 +1,9 @@
-MANIFEST.in
-README.txt
 setup.py
+graphique/__init__.py
+graphique/chartUtils.py
+graphique/charts.py
 graphique.egg-info/PKG-INFO
 graphique.egg-info/SOURCES.txt
 graphique.egg-info/dependency_links.txt
-graphique.egg-info/requires.txt
+graphique.egg-info/not-zip-safe
 graphique.egg-info/top_level.txt
-myPackage/__init__.py
-myPackage/charts.py

@@ -1,17 +1,10 @@
 Metadata-Version: 1.0
 Name: graphique
-Version: 0.1
-Summary: A package to make plotly charts easier to use.
-Home-page: https://github.com/mitchelllisle/graphique
+Version: 0.12
+Summary: A python package for making plotly simple to get up and running
+Home-page: http://github.com/mitchelllisle/graphique
 Author: Mitchell Lisle
-Author-email: lislemitchell at gmail
+Author-email: lislemitchell@gmail.com
 License: MIT
-Description: graphique
-        
-        This is a python package for making charting in plotly easier and quicker.
-        
-        Contributing:
-        
-        Please do!
-        
+Description: UNKNOWN
 Platform: UNKNOWN

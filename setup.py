@@ -1,14 +1,11 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
-setup(
-    name='graphique',
-    version='0.1',
-    packages=find_packages(exclude=['tests*']),
-    license='MIT',
-    description='A package to make plotly charts easier to use.',
-    long_description=open('README.txt').read(),
-    install_requires=['numpy', 'plotly', 'pandas'],
-    url='https://github.com/mitchelllisle/graphique',
-    author='Mitchell Lisle',
-    author_email='lislemitchell at gmail'
-)
+setup(name='graphique',
+      version='0.12',
+      description='A python package for making plotly simple to get up and running',
+      url='http://github.com/mitchelllisle/graphique',
+      author='Mitchell Lisle',
+      author_email='lislemitchell@gmail.com',
+      license='MIT',
+      packages=['graphique'],
+      zip_safe=False)
