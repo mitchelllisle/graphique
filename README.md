@@ -1,4 +1,4 @@
-![napoleon](https://user-images.githubusercontent.com/18128531/37870451-411a3646-3022-11e8-9f63-9cf10d71d1cf.png)
+![napoleon](https://user-images.githubusercontent.com/18128531/37870459-a5bc697a-3022-11e8-8b9b-fcd2b21f8a2f.png)
 
 [![CircleCI](https://circleci.com/gh/mitchelllisle/napoleon.svg?style=svg)](https://circleci.com/gh/mitchelllisle/napoleon)
 
