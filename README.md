@@ -25,8 +25,7 @@ nl.lineChart(data = amazonStocks,
              title = "Amazon Stock",
              subtitle = "The Amazon stock price form 2000 - 2010")
 ```
-
-![linechart](https://user-images.githubusercontent.com/18128531/37870250-b0d47e34-301c-11e8-80d0-3890bec4e734.png)
+![line](https://user-images.githubusercontent.com/18128531/37870398-ee950b2c-3020-11e8-9d42-4cad80c335df.png)
 
 It's also easy to add multiple series to any chart that support multiple series (E.g. line, column, histogram etc). The `y` axis argument accepts a list, so simply supplying the names of the columns will create multiple series.
 ```python
@@ -35,7 +34,7 @@ multiStocks = stocks.pivot(index='date', columns='symbol', values='price').reset
 nl.lineChart(data = multiStocks,
              x = "date", y = ['AAPL', 'AMZN', 'GOOG', 'MSFT'])
 ```
-![multipleline](https://user-images.githubusercontent.com/18128531/37870251-b3894a42-301c-11e8-8c7a-52f9460b3a31.png)
+![multiline](https://user-images.githubusercontent.com/18128531/37870397-ee5baa08-3020-11e8-8c96-8bc665976670.png)
 
 ```python
 import numpy as np
@@ -46,5 +45,4 @@ df = pd.DataFrame({'CategoryOne':np.random.normal(0, 0.8, 1000),
 
 nl.histChart(df, x = ['CategoryOne', 'CategoryTwo', 'CategoryThree'], title = "Histogram")
 ```
-
-![histogram](https://user-images.githubusercontent.com/18128531/37870386-b1c719b0-3020-11e8-92a2-d0e789e8daab.png)
+![hist](https://user-images.githubusercontent.com/18128531/37870399-eecc60c2-3020-11e8-969e-73b46e046fde.png)
