@@ -11,13 +11,28 @@ This is a simple Python package designd to make plotting with plotly quicker and
 `pip install --upgrade git+https://github.com/mitchelllisle/napoleon`
 
 ### Getting Started
-The whole idea of Napoleon was to make it much quicker and easier to produce a chart using the plotly python library. For example, to create a line chart:
+The whole idea of Napoleon was to make it much quicker to go from data to chart using the [Plotly](https://plot.ly/) charting library. For example, to create a line chart:
 
 ```python
+import pandas as pd
 import napoleon as nl
 
-nl.lineChart(creativeDataGroups, 'first_appeared', ['totalcreatives'], ['red'], "Creatives by Day", "The number of new creatives released by day")
+# This dataset is included in the Napoleon package
+data = pd.read_csv("data/champagneSales.csv")
+
+myTitle = "Perrin Freres Monthly Champagne Sales"
+mySubtitle = "Sample dataset showing Perrin Freres monthly champagne sales in millions from ’64-’72"
+
+# Create Napoleon Chart (this produces a plotly chart)
+nl.lineChart(data = data, x = "Month", y = ['Sales'], title = myTitle, subtitle = mySubtitle)
 ```
 
-
 ![linechart](https://user-images.githubusercontent.com/18128531/37869861-2c612862-3014-11e8-9408-ca97c5a6ef92.png)
+
+It's also easy to add multiple series to any chart that support multiple series (E.g. line, column, histogram etc). The `y` axis argument accepts a list, so simply supplying the names of the columns will create multiple series.
+```python
+data = data.assign(rollingAvg = data['Sales'].rolling(6).mean())
+
+nl.lineChart(data = data, x = "Month", y = ['Sales', 'rollingAvg'], title = myTitle, subtitle= mySubtitle)
+```
+![linechartmultipleseries](https://user-images.githubusercontent.com/18128531/37870233-37ca06d0-301c-11e8-9b83-b2e269b52165.png)
