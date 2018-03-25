@@ -13,6 +13,12 @@ This is a simple Python package designd to make plotting with plotly quicker and
 ### Getting Started
 The whole idea of Napoleon was to make it much quicker to go from data to chart using the [Plotly](https://plot.ly/) charting library. For example, to create a line chart:
 
+The convention I go with to load Napoleon is:
+
+```python
+import napoleon as nl
+```
+
 ```python
 from vega_datasets import data
 
