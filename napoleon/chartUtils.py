@@ -1,6 +1,7 @@
 import plotly.graph_objs as go
+import pandas as pd
 
-def generateTraces(chartType, data, x, y, color):
+def generateTraces(chartType, data, x, y, z, color):
     traces = []
 
     if chartType == 'Line':
@@ -26,8 +27,17 @@ def generateTraces(chartType, data, x, y, color):
                 opacity = 0.75,
                 marker=dict(color = color[i])
             ))
+    elif chartType == 'Heatmap':
+        heatmapData = data.groupby([x]).apply(lambda a: list(a[z])).reset_index()
+        heatmapData.columns = [x, z]
+
+        traces = [go.Heatmap(z=list(heatmapData[z]),
+                            x=list(weekDayHour[y].unique()),
+                            y=list(weekDayHour[x].unique()))
+                 ]
 
     return traces
+
 
 def generateLayout(chartType, barMode, title, subtitle):
     layout = go.Layout(
