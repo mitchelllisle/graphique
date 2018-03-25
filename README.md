@@ -1,4 +1,4 @@
-# Napoleon
+![napoleon](https://user-images.githubusercontent.com/18128531/37870451-411a3646-3022-11e8-9f63-9cf10d71d1cf.png)
 
 [![CircleCI](https://circleci.com/gh/mitchelllisle/napoleon.svg?style=svg)](https://circleci.com/gh/mitchelllisle/napoleon)
 
