@@ -32,8 +32,8 @@ def generateTraces(chartType, data, x, y, z, color):
         heatmapData.columns = [x, z]
 
         traces = [go.Heatmap(z=list(heatmapData[z]),
-                            x=list(weekDayHour[y].unique()),
-                            y=list(weekDayHour[x].unique()))
+                            x=list(data[y].unique()),
+                            y=list(data[x].unique()))
                  ]
 
     return traces
