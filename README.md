@@ -19,6 +19,14 @@ The convention I go with to load Napoleon is:
 import napoleon as nl
 ```
 
+There are currently three chart types supported
+```
+nl.LineChart()
+nl.columnChart()
+nl.histChart()
+```
+
+### Examples
 ```python
 from vega_datasets import data
 
