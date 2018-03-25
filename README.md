@@ -1,4 +1,4 @@
-# Napoleon
+![napoleon](https://user-images.githubusercontent.com/18128531/37870459-a5bc697a-3022-11e8-8b9b-fcd2b21f8a2f.png)
 
 [![CircleCI](https://circleci.com/gh/mitchelllisle/napoleon.svg?style=svg)](https://circleci.com/gh/mitchelllisle/napoleon)
 
@@ -13,6 +13,20 @@ This is a simple Python package designd to make plotting with plotly quicker and
 ### Getting Started
 The whole idea of Napoleon was to make it much quicker to go from data to chart using the [Plotly](https://plot.ly/) charting library. For example, to create a line chart:
 
+The convention I go with to load Napoleon is:
+
+```python
+import napoleon as nl
+```
+
+There are currently three chart types supported
+```
+nl.LineChart()
+nl.columnChart()
+nl.histChart()
+```
+
+### Examples
 ```python
 from vega_datasets import data
 
