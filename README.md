@@ -31,8 +31,11 @@ It's also easy to add multiple series to any chart that support multiple series 
 ```python
 multiStocks = stocks.pivot(index='date', columns='symbol', values='price').reset_index()
 
-nl.lineChart(data = multiStocks,
-             x = "date", y = ['AAPL', 'AMZN', 'GOOG', 'MSFT'])
+nl.lineChart(data = multiStocks, 
+             x = "date", 
+             y = ['AAPL', 'AMZN', 'GOOG', 'MSFT'],
+             title = "Amazon, Apple, Google, Microsoft Stock Price",
+             subtitle = "Stock prices form 2000 - 2010")
 ```
 ![multiline](https://user-images.githubusercontent.com/18128531/37870397-ee5baa08-3020-11e8-8c96-8bc665976670.png)
 
