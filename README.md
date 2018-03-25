@@ -27,7 +27,7 @@ mySubtitle = "Sample dataset showing Perrin Freres monthly champagne sales in mi
 nl.lineChart(data = data, x = "Month", y = ['Sales'], title = myTitle, subtitle = mySubtitle)
 ```
 
-![linechart](https://user-images.githubusercontent.com/18128531/37869861-2c612862-3014-11e8-9408-ca97c5a6ef92.png)
+![linechart](https://user-images.githubusercontent.com/18128531/37870250-b0d47e34-301c-11e8-80d0-3890bec4e734.png)
 
 It's also easy to add multiple series to any chart that support multiple series (E.g. line, column, histogram etc). The `y` axis argument accepts a list, so simply supplying the names of the columns will create multiple series.
 ```python
@@ -35,4 +35,4 @@ data = data.assign(rollingAvg = data['Sales'].rolling(6).mean())
 
 nl.lineChart(data = data, x = "Month", y = ['Sales', 'rollingAvg'], title = myTitle, subtitle= mySubtitle)
 ```
-![linechartmultipleseries](https://user-images.githubusercontent.com/18128531/37870233-37ca06d0-301c-11e8-9b83-b2e269b52165.png)
+![multipleline](https://user-images.githubusercontent.com/18128531/37870251-b3894a42-301c-11e8-8c7a-52f9460b3a31.png)
