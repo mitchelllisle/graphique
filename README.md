@@ -1,4 +1,5 @@
 ![napoleon](https://user-images.githubusercontent.com/18128531/37870459-a5bc697a-3022-11e8-8b9b-fcd2b21f8a2f.png)
+[![codecov](https://codecov.io/gh/mitchelllisle/napoleon/branch/master/graph/badge.svg)](https://codecov.io/gh/mitchelllisle/napoleon)
 
 [![CircleCI](https://circleci.com/gh/mitchelllisle/napoleon.svg?style=svg)](https://circleci.com/gh/mitchelllisle/napoleon)
 
