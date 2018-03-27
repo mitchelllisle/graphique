@@ -27,6 +27,7 @@ nl.histChart()
 ```
 
 ### Examples
+
 ```python
 from vega_datasets import data
 
