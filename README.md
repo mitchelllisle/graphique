@@ -21,7 +21,7 @@ import napoleon as nl
 
 There are currently three chart types supported
 ```
-nl.LineChart()
+nl.lineChart()
 nl.columnChart()
 nl.histChart()
 ```
