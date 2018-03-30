@@ -18,13 +18,13 @@ def testGenerateTraces_histChart():
                    'CategoryTwo':np.random.normal(-2, 1, 1000),
                    'CategoryThree':np.random.normal(3, 2, 1000)})
     
-    traces = generateTraces("Histogram", df, x = ['CategoryOne', 'CategoryTwo', 'CategoryThree'], y = None, z = None, color = "red")
+    traces = generateTraces("Histogram", df, x = ['CategoryOne', 'CategoryTwo', 'CategoryThree'], y = None, z = None, colour = "red")
     assert len(traces) == 3
     
 def testGenerateTraces_heatmapChart():
     # GENERATE DUMMY DATA - UBER DATA WILL WORK
     
-    traces = generateTraces("Heatmap", df, x = [], y = None, z = None, color = "red")
+    traces = generateTraces("Heatmap", df, x = [], y = None, z = None, colour = "red")
     assert len(traces) == 3
     
 
