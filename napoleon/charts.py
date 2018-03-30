@@ -1,6 +1,6 @@
 from .chartUtils import generateTraces
 from .chartUtils import generateLayout
-from .chartUtils import generateColour
+from .chartUtils import generateColours
 import plotly.offline as py
 import plotly.graph_objs as go
 
