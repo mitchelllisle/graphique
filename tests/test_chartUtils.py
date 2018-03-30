@@ -7,18 +7,8 @@ import pandas as pd
 layoutExpectedResult = "<class 'plotly.graph_objs.graph_objs.Layout'>"
 
 # Test Definitions
-def testGenerateLayout_lineChart():
+def testGenerateLayout():
     layout = generateLayout("Line", None, "Test Title Line Chart", "Test Subtitle Line Chart")
-    layoutType = str(type(layout))
-    assert layoutType == layoutExpectedResult
-    
-def testGenerateLayout_columnChart():
-    layout = generateLayout("Column", None, "Test Title Column Chart", "Test Subtitle Column Chart")
-    layoutType = str(type(layout))
-    assert layoutType == layoutExpectedResult
-    
-def testGenerateLayout_histChart():
-    layout = generateLayout("Histogram", "overlay", "Test Title Column Chart", "Test Subtitle Column Chart")
     layoutType = str(type(layout))
     assert layoutType == layoutExpectedResult
     
@@ -31,12 +21,16 @@ def testGenerateTraces_histChart():
     traces = generateTraces("Histogram", df, x = ['CategoryOne', 'CategoryTwo', 'CategoryThree'], y = None, z = None, color = "red")
     assert len(traces) == 3
     
+def testGenerateTraces_heatmapChart():
+    # GENERATE DUMMY DATA - UBER DATA WILL WORK
+    
+    traces = generateTraces("Heatmap", df, x = [], y = None, z = None, color = "red")
+    assert len(traces) == 3
+    
 
 # Run Functions
 ## Layouts
-testGenerateLayout_lineChart()
-testGenerateLayout_columnChart()
-testGenerateLayout_histChart()
+testGenerateLayout()
 
 ## Traces
 testGenerateTraces_histChart()
