@@ -1,4 +1,5 @@
 from .charts import lineChart
+from .charts import areaChart
 from .charts import columnChart
 from .charts import barChart
 from .charts import histChart

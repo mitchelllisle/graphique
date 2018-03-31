@@ -18,6 +18,19 @@ def lineChart(data, x, y, colour = "google", title = "", subtitle = ""):
     chart = py.iplot(plot)
     return chart
 
+def areaChart(data, x, y, colour = "google", title = "", subtitle = ""):
+    chartType = "Area"
+    barMode = None
+    z = None
+    colour = generateColours(colour)
+
+    traces = generateTraces(chartType, data, x, y, z, colour)
+
+    layout = generateLayout(chartType, barMode, title, subtitle)
+
+    plot = go.Figure(data = traces, layout = layout)
+    chart = py.iplot(plot)
+    return chart
 
 def columnChart(data, x, y, colour = "google", title = "", subtitle = ""):
     chartType = "Column"
@@ -65,7 +78,6 @@ def histChart(data, x, colour = "google", title = "", subtitle = ""):
     chart = py.iplot(plot)
     return chart
 
-
 def heatmapChart(data, x, y, z, title = "", subtitle = ""):
     chartType = "Heatmap"
     barMode = None
@@ -74,20 +86,6 @@ def heatmapChart(data, x, y, z, title = "", subtitle = ""):
     traces = generateTraces(chartType, data, x, y, z, colour)
 
     layout = generateLayout(chartType, barMode, title = title, subtitle = subtitle)
-
-    plot = go.Figure(data = traces, layout = layout)
-    chart = py.iplot(plot)
-    return chart
-
-def areaChart(data, x, y, colour = "google", title = "", subtitle = ""):
-    chartType = "Area"
-    barMode = None
-    z = None
-    colour = generateColours(colour)
-
-    traces = generateTraces(chartType, data, x, y, z, colour)
-
-    layout = generateLayout(chartType, barMode, title, subtitle)
 
     plot = go.Figure(data = traces, layout = layout)
     chart = py.iplot(plot)
