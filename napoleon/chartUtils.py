@@ -46,6 +46,16 @@ def generateTraces(chartType, data, x, y, z, colour, orientation = None):
                             x=list(data[y].unique()),
                             y=list(data[x].unique()))
                  ]
+    elif chartType == 'Area':
+        for i in range(0, len(y)):
+            traces.append(go.Scatter(
+                x = data[x],
+                y = data[y[i]],
+                name = y[i],
+                mode='lines',
+                fill = "tozeroy",
+                line=dict(color = colour[i])
+            ))
 
     return traces
 

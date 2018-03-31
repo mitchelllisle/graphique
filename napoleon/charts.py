@@ -78,3 +78,17 @@ def heatmapChart(data, x, y, z, title = "", subtitle = ""):
     plot = go.Figure(data = traces, layout = layout)
     chart = py.iplot(plot)
     return chart
+
+def areaChart(data, x, y, colour = "google", title = "", subtitle = ""):
+    chartType = "Area"
+    barMode = None
+    z = None
+    colour = generateColours(colour)
+
+    traces = generateTraces(chartType, data, x, y, z, colour)
+
+    layout = generateLayout(chartType, barMode, title, subtitle)
+
+    plot = go.Figure(data = traces, layout = layout)
+    chart = py.iplot(plot)
+    return chart
