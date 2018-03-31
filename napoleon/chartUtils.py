@@ -69,11 +69,19 @@ def generateLayout(chartType, barMode, title, subtitle):
             )
     return layout
 
-def generateColours(palette = "bigdatr", noOfColours = 10): 
+def generateColours(palette = "google"): 
     if palette == "bigdatr":
         colours = ['#AA86FC', '#FD6966', '#1EB1ED', '#A3D369', '#FAD747', '#396190']
 
     elif palette == "google":
         colours = ["#4791E5", "#F6A502", "#FB5A6E", "#1CB37D"]
     
+    elif palette == "colorbrewer":
+        colours = Paired_10.hex_colors
+    
+    elif palette == "colorbrewer_dark":
+        colours = Dark2_8.hex_colors
+        
+    else:
+        colours = palette
     return colours
