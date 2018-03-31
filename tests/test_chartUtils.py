@@ -21,11 +21,10 @@ def testGenerateTraces_histChart():
     traces = generateTraces("Histogram", df, x = ['CategoryOne', 'CategoryTwo', 'CategoryThree'], y = None, z = None, colour = "red")
     assert len(traces) == 3
     
-# def testGenerateTraces_heatmapChart():
-    # GENERATE DUMMY DATA - UBER DATA WILL WORK
-#    data = pd.read_csv("../data/uberData.csv")
-#    traces = generateTraces("Heatmap", df, x = [], y = None, z = None, colour = "red")
-#    assert len(traces) == 3
+def testGenerateTraces_heatmapChart():
+    data = pd.read_csv("data/uberData.csv")
+    traces = generateTraces("Heatmap", data, x = "weekday", y = "hour", z = "count", colour = "red")
+    assert len(traces[0].keys()) == 4
     
 
 # Run Functions
@@ -34,3 +33,4 @@ testGenerateLayout()
 
 ## Traces
 testGenerateTraces_histChart()
+testGenerateTraces_heatmapChart()
