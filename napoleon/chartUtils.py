@@ -3,7 +3,7 @@ import pandas as pd
 from palettable.colorbrewer.qualitative import Paired_10
 from palettable.colorbrewer.qualitative import Dark2_8
 
-def generateTraces(chartType, data, x, y, z, colour):
+def generateTraces(chartType, data, x, y, z, colour, orientation = None):
     traces = []
 
     if chartType == 'Line':
@@ -16,12 +16,21 @@ def generateTraces(chartType, data, x, y, z, colour):
                 line=dict(color = colour[i])
             ))
     elif chartType == 'Column':
-        for i in range(0, len(y)):
-            traces.append(go.Bar(
-                x = data[x],
-                y = data[y[i]],
-                marker=dict(color = colour[i])
-            ))
+        if orientation == "h":
+            for i in range(0, len(y)):
+                traces.append(go.Bar(
+                    x = data[x],
+                    y = data[y[i]],
+                    marker=dict(color = colour[i]),
+                    orientation = orientation
+                ))
+        else:
+            for i in range(0, len(y)):
+                traces.append(go.Bar(
+                    x = data[x],
+                    y = data[y[i]],
+                    marker=dict(color = colour[i])
+                ))
     elif chartType == 'Histogram':
         for i in range(0, len(x)):
             traces.append(go.Histogram(
