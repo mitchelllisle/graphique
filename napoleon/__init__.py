@@ -8,3 +8,4 @@ from .charts import heatmapChart
 from .chartUtils import generateLayout
 from .chartUtils import generateTraces
 from .chartUtils import generateColours
+from .chartUtils import createChart
