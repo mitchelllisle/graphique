@@ -15,6 +15,18 @@ def generateTraces(chartType, data, x, y, z, colour, orientation = None):
                 mode='lines',
                 line=dict(color = colour[i])
             ))
+
+    elif chartType == 'Area':	
+        for i in range(0, len(y)):
+            traces.append(go.Scatter(
+                x = data[x],
+                y = data[y[i]],
+                name = y[i],
+                mode='lines',
+                fill = "tozeroy",
+                line=dict(color = colour[i])
+            ))
+
     elif chartType == 'Column':
         if orientation == "h":
             for i in range(0, len(y)):
@@ -46,16 +58,6 @@ def generateTraces(chartType, data, x, y, z, colour, orientation = None):
                             x=list(data[y].unique()),
                             y=list(data[x].unique()))
                  ]
-    elif chartType == 'Area':
-        for i in range(0, len(y)):
-            traces.append(go.Scatter(
-                x = data[x],
-                y = data[y[i]],
-                name = y[i],
-                mode='lines',
-                fill = "tozeroy",
-                line=dict(color = colour[i])
-            ))
 
     return traces
 
@@ -88,19 +90,27 @@ def generateLayout(chartType, barMode, title, subtitle):
             )
     return layout
 
-def generateColours(palette = "google"): 
+def generateColours(palette = "bigdatr"):
     if palette == "bigdatr":
         colours = ['#AA86FC', '#FD6966', '#1EB1ED', '#A3D369', '#FAD747', '#396190']
 
     elif palette == "google":
         colours = ["#4791E5", "#F6A502", "#FB5A6E", "#1CB37D"]
-    
+
     elif palette == "colorbrewer":
         colours = Paired_10.hex_colors
-    
+
     elif palette == "colorbrewer_dark":
         colours = Dark2_8.hex_colors
-        
+
     else:
         colours = palette
     return colours
+
+
+def createChart(plot, saveAs = None):
+    if saveAs == None:
+        chart = py.iplot(plot, filename = saveAs)
+    else:
+        chart = py.plot(plot, filename = saveAs)
+    return chart
