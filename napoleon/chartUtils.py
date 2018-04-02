@@ -1,4 +1,5 @@
 import plotly.graph_objs as go
+import plotly.offline as py
 import pandas as pd
 from palettable.colorbrewer.qualitative import Paired_10
 from palettable.colorbrewer.qualitative import Dark2_8
@@ -16,7 +17,7 @@ def generateTraces(chartType, data, x, y, z, colour, orientation = None):
                 line=dict(color = colour[i])
             ))
 
-    elif chartType == 'Area':	
+    elif chartType == 'Area':
         for i in range(0, len(y)):
             traces.append(go.Scatter(
                 x = data[x],
