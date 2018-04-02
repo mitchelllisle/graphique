@@ -32,8 +32,8 @@ def areaChart(data, x, y, colour = "google", title = "", subtitle = "", saveAs =
 
     layout = generateLayout(chartType, barMode, title, subtitle)
 
-    plot = go.Figure(data = traces, layout = layout)
-    chart = py.iplot(plot)
+    chart = createChart(plot, saveAs)
+    
     return chart
 
 

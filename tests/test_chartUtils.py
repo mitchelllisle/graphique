@@ -27,11 +27,25 @@ def testGenerateTraces_heatmapChart():
     traces = generateTraces("Heatmap", data, x = "weekday", y = "hour", z = "count", colour = "red")
     assert len(traces[0].keys()) == 4
 
+def testGenerateTraces_columnChart():
+    data = pd.read_csv("data/amazonStocks.csv")
+    traces = generateTraces("Column", data, x = "date", y = ["price"], z = None, colour = ["google"])
+    assert len(traces[0].keys()) == 4
+
+def testGenerateTraces_barChart():
+    data = pd.read_csv("data/amazonStocks.csv")
+    traces = generateTraces("Column", data, x = "date", y = ["price"], z = None, colour = ["google"], orientation = "h")
+    assert len(traces[0].keys()) == 5
 
 def testGenerateTraces_lineChart():
     data = pd.read_csv("data/amazonStocks.csv")
     traces = generateTraces("Line", data, x = "date", y = ["price"], z = None, colour = ["google"])
     assert len(traces[0].keys()) == 6
+
+def testGenerateTraces_areaChart():
+    data = pd.read_csv("data/amazonStocks.csv")
+    traces = generateTraces("Area", data, x = "date", y = ["price"], z = None, colour = ["google"])
+    assert len(traces[0].keys()) == 7
 
 
 def testGenerateColours_google():
@@ -60,6 +74,10 @@ def testGenerateColours_custom():
 testGenerateLayout()
 
 ## Traces
+testGenerateTraces_lineChart()
+testGenerateTraces_areaChart()
+testGenerateTraces_columnChart()
+testGenerateTraces_barChart()
 testGenerateTraces_histChart()
 testGenerateTraces_heatmapChart()
 
