@@ -1,6 +1,7 @@
 from .chartUtils import generateTraces
 from .chartUtils import generateLayout
 from .chartUtils import generateColours
+from .chartUtils import createChart
 import plotly.offline as py
 import plotly.graph_objs as go
 
@@ -33,7 +34,7 @@ def areaChart(data, x, y, colour = "google", title = "", subtitle = "", saveAs =
     layout = generateLayout(chartType, barMode, title, subtitle)
 
     chart = createChart(plot, saveAs)
-    
+
     return chart
 
 
