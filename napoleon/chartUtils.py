@@ -3,6 +3,11 @@ import pandas as pd
 from palettable.colorbrewer.qualitative import Paired_10
 from palettable.colorbrewer.qualitative import Dark2_8
 
+import plotly.graph_objs as go
+import pandas as pd
+from palettable.colorbrewer.qualitative import Paired_10
+from palettable.colorbrewer.qualitative import Dark2_8
+
 def generateTraces(chartType, data, x, y, z, colour, orientation = None):
     traces = []
 
@@ -46,17 +51,7 @@ def generateTraces(chartType, data, x, y, z, colour, orientation = None):
                             x=list(data[y].unique()),
                             y=list(data[x].unique()))
                  ]
-    elif chartType == 'Area':
-        for i in range(0, len(y)):
-            traces.append(go.Scatter(
-                x = data[x],
-                y = data[y[i]],
-                name = y[i],
-                mode='lines',
-                fill = "tozeroy",
-                line=dict(color = colour[i])
-            ))
-
+        
     return traces
 
 
@@ -88,7 +83,7 @@ def generateLayout(chartType, barMode, title, subtitle):
             )
     return layout
 
-def generateColours(palette = "google"): 
+def generateColours(palette = "bigdatr"): 
     if palette == "bigdatr":
         colours = ['#AA86FC', '#FD6966', '#1EB1ED', '#A3D369', '#FAD747', '#396190']
 
@@ -104,3 +99,11 @@ def generateColours(palette = "google"):
     else:
         colours = palette
     return colours
+
+
+def createChart(plot, saveAs = None):
+    if saveAs == None:
+        chart = py.iplot(plot, filename = saveAs)
+    else:
+        chart = py.plot(plot, filename = saveAs)
+    return chart
