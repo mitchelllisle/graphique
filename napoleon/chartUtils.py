@@ -3,11 +3,6 @@ import pandas as pd
 from palettable.colorbrewer.qualitative import Paired_10
 from palettable.colorbrewer.qualitative import Dark2_8
 
-import plotly.graph_objs as go
-import pandas as pd
-from palettable.colorbrewer.qualitative import Paired_10
-from palettable.colorbrewer.qualitative import Dark2_8
-
 def generateTraces(chartType, data, x, y, z, colour, orientation = None):
     traces = []
 
