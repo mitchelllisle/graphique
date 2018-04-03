@@ -3,7 +3,7 @@
 [![CircleCI](https://circleci.com/gh/mitchelllisle/napoleon.svg?style=svg)](https://circleci.com/gh/mitchelllisle/napoleon)
 [![codecov](https://codecov.io/gh/mitchelllisle/napoleon/branch/master/graph/badge.svg)](https://codecov.io/gh/mitchelllisle/napoleon)
 
-This is a simple Python package designed to make plotting with plotly quicker and easier with some sensible defaults.
+This is a simple Python package designed to make charting with plotly quicker and easier with some sensible defaults.
 
 ### Installation
 `pip install git+https://github.com/mitchelllisle/napoleon`
