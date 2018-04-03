@@ -1,15 +1,18 @@
 import pytest
+import numpy as np
+import pandas as pd
+
 from napoleon import lineChart
+from napoleon import scatterChart
 from napoleon import areaChart
 from napoleon import columnChart
 from napoleon import barChart
 from napoleon import histChart
 from napoleon import heatmapChart
+
 from napoleon import generateLayout
 from napoleon import generateTraces
 from napoleon import generateColours
-import numpy as np
-import pandas as pd
 
 amazonStocks = pd.read_csv("data/amazonStocks.csv")
 uberData = pd.read_csv("data/uberData.csv")
@@ -22,6 +25,15 @@ def test_lineChart():
         subtitle = "The Amazon stock price form 2000 - 2010",
        colour = "bigdatr",
        saveAs = "line.html")
+    
+def test_scatterChart():
+    scatterChart(data = amazonStocks,
+       x = "date",
+       y = ['price'],
+        title = "Amazon Stock",
+        subtitle = "The Amazon stock price form 2000 - 2010",
+       colour = "bigdatr",
+       saveAs = "scatter.html")
 
 def test_areaChart():
     areaChart(data = amazonStocks,

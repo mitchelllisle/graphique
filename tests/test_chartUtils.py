@@ -41,6 +41,11 @@ def testGenerateTraces_lineChart():
     data = pd.read_csv("data/amazonStocks.csv")
     traces = generateTraces("Line", data, x = "date", y = ["price"], z = None, colour = ["google"])
     assert len(traces[0].keys()) == 6
+    
+def testGenerateTraces_scatterChart():
+    data = pd.read_csv("data/amazonStocks.csv")
+    traces = generateTraces("Scatter", data, x = "date", y = ["price"], z = None, colour = ["google"])
+    assert len(traces[0].keys()) == 6
 
 def testGenerateTraces_areaChart():
     data = pd.read_csv("data/amazonStocks.csv")
