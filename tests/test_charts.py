@@ -23,41 +23,36 @@ def test_lineChart():
        saveAs = "line.html")
 
 
-#def test_columnChart():
-    #columnChart(data = amazonStocks,
-      #   x = "date",
-       #  y = ['price'],
-       #  title = "Amazon Stock",
-        # subtitle = "The Amazon stock price form 2000 - 2010",
-        # colour = "bigdatr")
+def test_columnChart():
+    columnChart(data = amazonStocks,
+        x = "date",
+        y = ['price'],
+        title = "Amazon Stock",
+        subtitle = "The Amazon stock price form 2000 - 2010",
+       colour = "bigdatr",
+       saveAs = "column.html")
 
-#def test_barChart():
-   # barChart(data = amazonStocks,
-      #   x = "date",
-       #  y = ['price'],
-      #   title = "Amazon Stock",
-       #  subtitle = "The Amazon stock price form 2000 - 2010",
-        # colour = "bigdatr")
+def test_barChart():
+   barChart(data = amazonStocks,
+        x = "date",
+        y = ['price'],
+        title = "Amazon Stock",
+        subtitle = "The Amazon stock price form 2000 - 2010",
+       colour = "bigdatr",
+       saveAs = "bar.html")
 
-#def test_histChart():
- #   histChart(data = amazonStocks,
-  #       x = ["price"],
-   #      title = "Amazon Stock",
-    #     subtitle = "The Amazon stock price form 2000 - 2010",
-     #    colour = "bigdatr")
+def test_histChart():
+   histChart(data = amazonStocks,
+        x = ["price"],
+        title = "Amazon Stock",
+        subtitle = "The Amazon stock price form 2000 - 2010",
+       colour = "bigdatr",
+       saveAs = "hist.html")
 
-#def test_heatmapChart():
-    #heatmapChart(uberData,
-      #           x = "weekday",
-               #  y = "hour",
-               #  z = "count",
-                # title = "Heatmap of Time of Day vs Day of Week")
-
-
-# Run Functions
-## Layouts
-# test_lineChart()
-#test_columnChart()
-#test_barChart()
-#test_histChart()
-#test_heatmapChart()
+def test_heatmapChart():
+    heatmapChart(uberData,
+                x = "weekday",
+                y = "hour",
+                z = "count",
+                title = "Heatmap of Time of Day vs Day of Week",
+                saveAs = "heatmap.html")
