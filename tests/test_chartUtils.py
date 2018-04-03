@@ -67,23 +67,3 @@ def testGenerateColours_colorbrewer_dark():
 def testGenerateColours_custom():
     colours = generateColours(["#FD6966", "#4791E5"])
     assert len(colours) == 2
-
-
-# Run Functions
-## Layouts
-testGenerateLayout()
-
-## Traces
-testGenerateTraces_lineChart()
-testGenerateTraces_areaChart()
-testGenerateTraces_columnChart()
-testGenerateTraces_barChart()
-testGenerateTraces_histChart()
-testGenerateTraces_heatmapChart()
-
-## Colours
-testGenerateColours_bigdatr()
-testGenerateColours_google()
-testGenerateColours_colorbrewer()
-testGenerateColours_colorbrewer_dark()
-testGenerateColours_custom()

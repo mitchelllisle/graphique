@@ -1,5 +1,6 @@
 import pytest
 from napoleon import lineChart
+from napoleon import areaChart
 from napoleon import columnChart
 from napoleon import barChart
 from napoleon import histChart
@@ -21,6 +22,15 @@ def test_lineChart():
         subtitle = "The Amazon stock price form 2000 - 2010",
        colour = "bigdatr",
        saveAs = "line.html")
+
+def test_areaChart():
+    areaChart(data = amazonStocks,
+       x = "date",
+       y = ['price'],
+        title = "Amazon Stock",
+        subtitle = "The Amazon stock price form 2000 - 2010",
+       colour = "bigdatr",
+       saveAs = "area.html")
 
 
 def test_columnChart():
