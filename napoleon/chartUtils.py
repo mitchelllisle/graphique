@@ -98,9 +98,12 @@ def generateLayout(chartType, barMode, title, subtitle):
                         text = title,
                         showarrow=False
                     )
-                ]
+                ],
+             paper_bgcolor = 'white',
+             plot_bgcolor  = 'white'
             )
     return layout
+
 
 def generateColours(palette = "bigdatr"):
     if palette == "bigdatr":
