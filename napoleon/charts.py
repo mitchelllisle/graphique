@@ -56,19 +56,19 @@ def areaChart(data, x, y, colour = "google", title = "", subtitle = "", saveAs =
     return chart
 
 
-def columnChart(data, x, y, colour = "google", title = "", subtitle = "", saveAs = None):
+def columnChart(data, x, y, colour = "google", title = "", subtitle = "", saveAs = None, barMode = None):
     chartType = "Column"
-    barMode = None
+    barMode = barMode
     z = None
-
-    pal = generateColours(colour)
+    
+    pal = generateColours()
 
     traces = generateTraces(chartType, data, x, y, z, pal)
 
     layout = generateLayout(chartType, barMode, title, subtitle)
 
     plot = go.Figure(data = traces, layout = layout)
-
+    
     chart = createChart(plot, saveAs)
 
     return chart
