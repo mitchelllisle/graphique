@@ -45,6 +45,7 @@ def generateTraces(chartType, data, x, y, z, colour, orientation = None):
                 traces.append(go.Bar(
                     x = data[x],
                     y = data[y[i]],
+                    name = y[i],
                     marker=dict(color = colour[i]),
                     orientation = orientation
                 ))
