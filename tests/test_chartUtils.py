@@ -35,7 +35,7 @@ def testGenerateTraces_columnChart():
 def testGenerateTraces_barChart():
     data = pd.read_csv("data/amazonStocks.csv")
     traces = generateTraces("Column", data, x = "date", y = ["price"], z = None, colour = ["google"], orientation = "h")
-    assert len(traces[0].keys()) == 5
+    assert len(traces[0].keys()) == 6
 
 def testGenerateTraces_lineChart():
     data = pd.read_csv("data/amazonStocks.csv")
