@@ -72,25 +72,6 @@ def generateTraces(chartType, data, x, y, z, colour, orientation = None):
                             x=list(data[y].unique()),
                             y=list(data[x].unique()))
                  ]
-        
-    elif chartType == 'BoxPlot':
-        if orientation == "h":
-            for i in range(0, len(y)):
-                traces.append(go.Box(
-                    x = data[x],
-                    y = data[y[i]],
-                    marker=dict(color = colour[i]),
-                    boxmean='sd',
-                    orientation = orientation
-                ))
-        else:
-            for i in range(0, len(y)):
-                traces.append(go.Box(
-                    x = data[x],
-                    y = data[y[i]],
-                    marker=dict(color = colour[i]),
-                    boxmean='sd'
-                ))
 
     return traces
 
