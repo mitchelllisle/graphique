@@ -2,10 +2,14 @@ import pytest
 from napoleon import generateLayout
 from napoleon import generateTraces
 from napoleon import generateColours
+from napoleon import evaluateTraceType
 import numpy as np
 import pandas as pd
 
 layoutExpectedResult = "<class 'plotly.graph_objs.graph_objs.Layout'>"
+stocks = pd.read_csv("data/stocks.csv")
+amazonStocks = stocks.query("symbol == 'AMZN'")
+uberData = pd.read_csv("data/uberData.csv")
 
 # Test Definitions
 def testGenerateLayout():
@@ -23,33 +27,27 @@ def testGenerateTraces_histChart():
     assert len(traces) == 3
 
 def testGenerateTraces_heatmapChart():
-    data = pd.read_csv("data/uberData.csv")
-    traces = generateTraces("Heatmap", data, x = "weekday", y = "hour", z = "count", colour = "red")
+    traces = generateTraces("Heatmap", uberData, x = "weekday", y = "hour", z = "count", colour = "red")
     assert len(traces[0].keys()) == 4
 
 def testGenerateTraces_columnChart():
-    data = pd.read_csv("data/amazonStocks.csv")
-    traces = generateTraces("Column", data, x = "date", y = ["price"], z = None, colour = ["google"])
+    traces = evaluateTraceType("Column", amazonStocks, x = "date", y = "price", z = None, pal = ["google"], group = None)
     assert len(traces[0].keys()) == 5
 
 def testGenerateTraces_barChart():
-    data = pd.read_csv("data/amazonStocks.csv")
-    traces = generateTraces("Column", data, x = "date", y = ["price"], z = None, colour = ["google"], orientation = "h")
+    traces = evaluateTraceType("Column", amazonStocks, x = "date", y = "price", z = None, pal = ["google"], group = None, orientation = "h")        
     assert len(traces[0].keys()) == 6
 
 def testGenerateTraces_lineChart():
-    data = pd.read_csv("data/amazonStocks.csv")
-    traces = generateTraces("Line", data, x = "date", y = ["price"], z = None, colour = ["google"])
+    traces = evaluateTraceType("Line", amazonStocks, x = "date", y = "price", z = None, pal = ["google"], group = None)
     assert len(traces[0].keys()) == 6
     
 def testGenerateTraces_scatterChart():
-    data = pd.read_csv("data/amazonStocks.csv")
-    traces = generateTraces("Scatter", data, x = "date", y = ["price"], z = None, colour = ["google"])
+    traces = evaluateTraceType("Scatter", amazonStocks, x = "date", y = "price", z = None, pal = ["google"], group = None)
     assert len(traces[0].keys()) == 6
 
 def testGenerateTraces_areaChart():
-    data = pd.read_csv("data/amazonStocks.csv")
-    traces = generateTraces("Area", data, x = "date", y = ["price"], z = None, colour = ["google"])
+    traces = evaluateTraceType("Area", amazonStocks, x = "date", y = "price", z = None, pal = ["google"], group = None)
     assert len(traces[0].keys()) == 7
 
 
