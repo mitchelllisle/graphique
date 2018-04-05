@@ -90,22 +90,6 @@ def barChart(data, x, y, group = None, colour = "google", title = "", subtitle =
     return chart
 
 
-def boxChart(data, x, y, group = None, colour = "google", title = "", subtitle = "", saveAs = None):
-    chartType = "BoxPlot"
-    barMode = None
-    z = None
-    
-    pal = generateColours(colour)
-
-    traces = evaluateTraceType(chartType, data, x, y, z, pal, group)
-
-    layout = generateLayout(chartType, barMode, title, subtitle)
-
-    plot = go.Figure(data = traces, layout = layout)
-    chart = py.iplot(plot)
-    return chart
-
-
 def histChart(data, x,  group = None, colour = "google", title = "", subtitle = "", saveAs = None):
     chartType = "Histogram"
     barMode = "overlay"

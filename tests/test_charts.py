@@ -15,7 +15,8 @@ from napoleon import generateTraces
 from napoleon import generateColours
 from napoleon import evaluateTraceType
 
-amazonStocks = pd.read_csv("data/amazonStocks.csv")
+stocks = pd.read_csv("data/stocks.csv")
+amazonStocks = stocks.query("symbol == 'AMZN'")
 uberData = pd.read_csv("data/uberData.csv")
 
 def test_lineChart():
@@ -26,6 +27,16 @@ def test_lineChart():
         subtitle = "The Amazon stock price form 2000 - 2010",
        colour = "bigdatr",
        saveAs = "line.html")
+    
+def test_multiLineChart():
+    lineChart(data = stocks, 
+         x = "date", 
+         y = "price",
+         group = "symbol",
+         title = "Amazon, Apple, Google, Microsoft Stock Price",
+         subtitle = "Stock prices form 2000 - 2010",
+         colour = "colorbrewer_dark",
+         saveAs = "multiLine.html")
     
 def test_scatterChart():
     scatterChart(data = amazonStocks,
