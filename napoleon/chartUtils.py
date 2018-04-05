@@ -26,19 +26,7 @@ def generateTraces(chartType, data, x, y, z, colour, orientation = None):
                 mode='markers',
                 line=dict(color = colour[i])
             ))
-                
-
-    elif chartType == 'Area':
-        for i in range(0, len(y)):
-            traces.append(go.Scatter(
-                x = data[x],
-                y = data[y[i]],
-                name = y[i],
-                mode='lines',
-                fill = "tozeroy",
-                line=dict(color = colour[i])
-            ))
-
+            
     elif chartType == 'Column':
         if orientation == "h":
             for i in range(0, len(y)):
@@ -54,13 +42,14 @@ def generateTraces(chartType, data, x, y, z, colour, orientation = None):
                 traces.append(go.Bar(
                     x = data[x],
                     y = data[y[i]],
-                    name = y[i],
+                    name = y[i],                    
                     marker=dict(color = colour[i])
                 ))
     elif chartType == 'Histogram':
         for i in range(0, len(x)):
             traces.append(go.Histogram(
                 x = data[x[i]],
+                name = x[i],
                 opacity = 0.75,
                 marker=dict(color = colour[i])
             ))
@@ -72,6 +61,25 @@ def generateTraces(chartType, data, x, y, z, colour, orientation = None):
                             x=list(data[y].unique()),
                             y=list(data[x].unique()))
                  ]
+        
+    elif chartType == 'BoxPlot':
+        if orientation == "h":
+            for i in range(0, len(y)):
+                traces.append(go.Box(
+                    x = data[x],
+                    y = data[y[i]],
+                    marker=dict(color = colour[i]),
+                    boxmean='sd',
+                    orientation = orientation
+                ))
+        else:
+            for i in range(0, len(y)):
+                traces.append(go.Box(
+                    x = data[x],
+                    y = data[y[i]],
+                    marker=dict(color = colour[i]),
+                    boxmean='sd'
+                ))
 
     return traces
 
@@ -106,24 +114,22 @@ def generateLayout(chartType, barMode, title, subtitle):
             )
     return layout
 
-
-def generateColours(palette = "bigdatr"):
+def generateColours(palette = "bigdatr"): 
     if palette == "bigdatr":
         colours = ['#AA86FC', '#FD6966', '#1EB1ED', '#A3D369', '#FAD747', '#396190']
 
     elif palette == "google":
         colours = ["#4791E5", "#F6A502", "#FB5A6E", "#1CB37D"]
-
+    
     elif palette == "colorbrewer":
         colours = Paired_10.hex_colors
-
+    
     elif palette == "colorbrewer_dark":
         colours = Dark2_8.hex_colors
-
+        
     else:
         colours = palette
     return colours
-
 
 def createChart(plot, saveAs = None):
     if saveAs == None:
@@ -131,3 +137,13 @@ def createChart(plot, saveAs = None):
     else:
         chart = py.plot(plot, filename = saveAs)
     return chart
+
+
+def evaluateTraceType(chartType, data, x, y, z, pal, group = None, orientation = None):
+    if group == None:
+        traces = generateTraces(chartType, data, x, [y], z, pal, orientation)
+    else:
+        pivotedData = data.pivot(index = x, columns = group, values = y).reset_index()
+        columns = pivotedData.columns[1:].tolist()
+        traces = generateTraces(chartType, pivotedData, x, columns, z, pal, orientation)
+    return traces
