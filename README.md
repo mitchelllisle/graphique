@@ -37,23 +37,83 @@ amazonStocks = stocks.query("symbol == 'AMZN'")
 
 nl.lineChart(data = amazonStocks,
              x = "date",
-             y = ['price'],
+             y = 'price',
              title = "Amazon Stock",
-             subtitle = "The Amazon stock price form 2000 - 2010")
+             subtitle = "The Amazon stock price form 2000 - 2010",
+             colour = "bigdatr")
 ```
 ![line](https://user-images.githubusercontent.com/18128531/37870398-ee950b2c-3020-11e8-9d42-4cad80c335df.png)
 
-It's also easy to add multiple series to any chart that support multiple series (E.g. line, column, histogram etc). The `y` axis argument accepts a list, so simply supplying the names of the columns will create multiple series.
+It's also easy to add multiple series to any chart that support multiple series (E.g. line, column, histogram etc). Simply pass in a `group` values that contains the subsets to colour individually.
 ```python
-multiStocks = stocks.pivot(index='date', columns='symbol', values='price').reset_index()
-
-nl.lineChart(data = multiStocks, 
-             x = "date", 
-             y = ['AAPL', 'AMZN', 'GOOG', 'MSFT'],
+nl.lineChart(data = stocks,
+             x = "date",
+             y = "price",
+             group = "symbol",
              title = "Amazon, Apple, Google, Microsoft Stock Price",
-             subtitle = "Stock prices form 2000 - 2010")
+             subtitle = "Stock prices form 2000 - 2010",
+             colour = "colorbrewer_dark")
 ```
-![multiline](https://user-images.githubusercontent.com/18128531/37870397-ee5baa08-3020-11e8-8c96-8bc665976670.png)
+![multiline](https://user-images.githubusercontent.com/18128531/38362182-3d8babdc-3913-11e8-99c8-935820fab377.png)
+
+Column charts can be single series:
+```python
+from vega_datasets import data
+
+stocks = data.stocks()
+amazonStocks = stocks.query("symbol == 'AMZN'")
+
+nl.columnChart(data = amazonStocks,
+             x = "date",
+             y = 'price',
+             title = "Amazon Stock",
+             subtitle = "The Amazon stock price form 2000 - 2010",
+             colour = "google",
+             barMode = "stack")
+
+```
+![column](https://user-images.githubusercontent.com/18128531/38362169-37c04b90-3913-11e8-81f3-512e7a6d8227.png)
+
+Multi-Series with the `group` option:
+```python
+from vega_datasets import data
+
+stocks = data.stocks()
+stocks = (
+    stocks
+    .query('date > 2009')
+)
+
+nl.columnChart(data = stocks,
+             x = 'date',
+             y = 'price',
+            group = 'symbol',
+             title = 'Amazon, Apple, Google, IBM & Microsoft Stock Price',
+             subtitle = "The Tech-Giants stock prices form 2005 - 2010",
+             colour = "bigdatr")
+
+```
+![multicolumn](https://user-images.githubusercontent.com/18128531/38362202-53eacd18-3913-11e8-85c5-445f8cffcbe3.png)
+
+As well as Multi-Series stacked with the `barMode = "stack"` option:
+```python
+from vega_datasets import data
+
+stocks = data.stocks()
+stocks = (
+    stocks
+    .query('date >= 2005')
+)
+nl.columnChart(data = stocks,
+             x = 'date',
+             y = 'price',
+            group = 'symbol',
+             title = 'Amazon, Apple, Google, IBM & Microsoft Stock Price',
+             subtitle = "The Tech-Giants stock prices form 2005 - 2010",
+             colour = "bigdatr",
+             barMode = "stack")
+```
+![multicolumnstack](https://user-images.githubusercontent.com/18128531/38362207-566dab6e-3913-11e8-9789-b1517ebcbe65.png)
 
 ```python
 import numpy as np
