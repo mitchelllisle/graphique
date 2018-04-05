@@ -61,7 +61,7 @@ def columnChart(data, x, y, colour = "google", title = "", subtitle = "", saveAs
     barMode = barMode
     z = None
     
-    pal = generateColours()
+    pal = generateColours(colour)
 
     traces = generateTraces(chartType, data, x, y, z, pal)
 
