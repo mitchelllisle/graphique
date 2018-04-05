@@ -30,7 +30,7 @@ def testGenerateTraces_heatmapChart():
 def testGenerateTraces_columnChart():
     data = pd.read_csv("data/amazonStocks.csv")
     traces = generateTraces("Column", data, x = "date", y = ["price"], z = None, colour = ["google"])
-    assert len(traces[0].keys()) == 4
+    assert len(traces[0].keys()) == 5
 
 def testGenerateTraces_barChart():
     data = pd.read_csv("data/amazonStocks.csv")
