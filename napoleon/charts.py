@@ -21,6 +21,22 @@ def lineChart(data, x, y, group = None, colour = "google", title = "", subtitle 
     
     return chart
 
+def areaChart(data, x, y, group = None, colour = "google", title = "", subtitle = "", saveAs = None):
+    chartType = "Area"
+    barMode = None
+    z = None
+    colour = generateColours(colour)
+
+    traces = evaluateTraceType(chartType, data, x, y, z, pal, group)
+
+    layout = generateLayout(chartType, barMode, title, subtitle)
+
+    plot = go.Figure(data = traces, layout = layout)
+
+    chart = createChart(plot, saveAs)
+
+    return chart
+
 def scatterChart(data, x, y, group = None, colour = "google", title = "", subtitle = "", saveAs = None):
     chartType = "Scatter"
     barMode = None
