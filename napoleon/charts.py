@@ -1,6 +1,7 @@
 from .chartUtils import generateTraces
 from .chartUtils import generateLayout
 from .chartUtils import generateColours
+from .chartUtils import evaluateTraceType
 from .chartUtils import createChart
 import plotly.offline as py
 import plotly.graph_objs as go
@@ -25,7 +26,7 @@ def areaChart(data, x, y, group = None, colour = "google", title = "", subtitle 
     chartType = "Area"
     barMode = None
     z = None
-    colour = generateColours(colour)
+    pal = generateColours(colour)
 
     traces = evaluateTraceType(chartType, data, x, y, z, pal, group)
 
@@ -130,7 +131,7 @@ def heatmapChart(data, x, y, z,  group = None, title = "", subtitle = "", saveAs
     barMode = None
     pal = None
 
-    traces = evaluateTraceType(chartType, data, x, y, z, pal, group)
+    traces = generateTraces(chartType, data, x, y, z, pal)
 
     layout = generateLayout(chartType, barMode, title = title, subtitle = subtitle)
 

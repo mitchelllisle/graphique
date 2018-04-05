@@ -30,27 +30,27 @@ def testGenerateTraces_heatmapChart():
 
 def testGenerateTraces_columnChart():
     data = pd.read_csv("data/amazonStocks.csv")
-    traces = generateTraces("Column", data, x = "date", y = "price", z = None, colour = ["google"])
+    traces = evaluateTraceType("Column", data, x = "date", y = "price", z = None, pal = ["google"], group = None)
     assert len(traces[0].keys()) == 5
 
 def testGenerateTraces_barChart():
     data = pd.read_csv("data/amazonStocks.csv")
-    traces = generateTraces("Column", data, x = "date", y = "price", z = None, colour = ["google"], orientation = "h")
+    traces = evaluateTraceType("Column", data, x = "date", y = "price", z = None, pal = ["google"], group = None, orientation = "h")        
     assert len(traces[0].keys()) == 6
 
 def testGenerateTraces_lineChart():
     data = pd.read_csv("data/amazonStocks.csv")
-    traces = generateTraces("Line", data, x = "date", y = "price", z = None, colour = ["google"])
+    traces = evaluateTraceType("Line", data, x = "date", y = "price", z = None, pal = ["google"], group = None)
     assert len(traces[0].keys()) == 6
     
 def testGenerateTraces_scatterChart():
     data = pd.read_csv("data/amazonStocks.csv")
-    traces = generateTraces("Scatter", data, x = "date", y = "price", z = None, colour = ["google"])
+    traces = evaluateTraceType("Scatter", data, x = "date", y = "price", z = None, pal = ["google"], group = None)
     assert len(traces[0].keys()) == 6
 
 def testGenerateTraces_areaChart():
     data = pd.read_csv("data/amazonStocks.csv")
-    traces = generateTraces("Area", data, x = "date", y = "price", z = None, colour = ["google"])
+    traces = evaluateTraceType("Area", data, x = "date", y = "price", z = None, pal = ["google"], group = None)
     assert len(traces[0].keys()) == 7
 
 

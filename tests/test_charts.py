@@ -13,6 +13,7 @@ from napoleon import heatmapChart
 from napoleon import generateLayout
 from napoleon import generateTraces
 from napoleon import generateColours
+from napoleon import evaluateTraceType
 
 amazonStocks = pd.read_csv("data/amazonStocks.csv")
 uberData = pd.read_csv("data/uberData.csv")
@@ -20,7 +21,7 @@ uberData = pd.read_csv("data/uberData.csv")
 def test_lineChart():
     lineChart(data = amazonStocks,
        x = "date",
-       y = ['price'],
+       y = 'price',
         title = "Amazon Stock",
         subtitle = "The Amazon stock price form 2000 - 2010",
        colour = "bigdatr",
@@ -29,7 +30,7 @@ def test_lineChart():
 def test_scatterChart():
     scatterChart(data = amazonStocks,
        x = "date",
-       y = ['price'],
+       y = 'price',
         title = "Amazon Stock",
         subtitle = "The Amazon stock price form 2000 - 2010",
        colour = "bigdatr",
@@ -38,7 +39,7 @@ def test_scatterChart():
 def test_areaChart():
     areaChart(data = amazonStocks,
        x = "date",
-       y = ['price'],
+       y = 'price',
         title = "Amazon Stock",
         subtitle = "The Amazon stock price form 2000 - 2010",
        colour = "bigdatr",
@@ -48,23 +49,23 @@ def test_areaChart():
 def test_columnChart():
     columnChart(data = amazonStocks,
         x = "date",
-        y = ['price'],
+        y = 'price',
         title = "Amazon Stock",
         subtitle = "The Amazon stock price form 2000 - 2010",
        colour = "bigdatr",
        saveAs = "column.html")
 
 def test_barChart():
-   barChart(data = amazonStocks,
+    barChart(data = amazonStocks,
         x = "date",
-        y = ['price'],
+        y = 'price',
         title = "Amazon Stock",
         subtitle = "The Amazon stock price form 2000 - 2010",
        colour = "bigdatr",
        saveAs = "bar.html")
 
 def test_histChart():
-   histChart(data = amazonStocks,
+    histChart(data = amazonStocks,
         x = ["price"],
         title = "Amazon Stock",
         subtitle = "The Amazon stock price form 2000 - 2010",
