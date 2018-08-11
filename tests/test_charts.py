@@ -35,4 +35,4 @@ def test_areaChart():
        x = "date",
        y = 'price',
        color = "symbol")
-    assert type(chart) == alt.Chart
+    assert type(chart) == alt.LayerChart
