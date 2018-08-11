@@ -1,126 +1,58 @@
-from .chartUtils import generateTraces
-from .chartUtils import generateLayout
-from .chartUtils import generateColours
-from .chartUtils import evaluateTraceType
-from .chartUtils import createChart
-import plotly.offline as py
-import plotly.graph_objs as go
+from .chartUtils import calcSizes
+import altair as alt
+import c3p0
+import martha
+import pandas as pd
 
-def lineChart(data, x, y, group = None, colour = "google", title = "", subtitle = "", saveAs = None):
-    chartType = "Line"
-    barMode = None
-    z = None
-    pal = generateColours(colour)
-    
-    traces = evaluateTraceType(chartType, data, x, y, z, pal, group)
-    
-    layout = generateLayout(chartType, barMode, title, subtitle)
+dim = [1000, 400]
 
-    plot = go.Figure(data = traces, layout = layout)
-    
-    chart = createChart(plot, saveAs)
-    
-    return chart
+def barChart(data, x, y, color, stack = "zero", y2 = None, width = dim[0], height = dim[1]):
+    dims = calcSizes(data, x, width)
 
-def areaChart(data, x, y, group = None, colour = "google", title = "", subtitle = "", saveAs = None):
-    chartType = "Area"
-    barMode = None
-    z = None
-    pal = generateColours(colour)
-
-    traces = evaluateTraceType(chartType, data, x, y, z, pal, group)
-
-    layout = generateLayout(chartType, barMode, title, subtitle)
-
-    plot = go.Figure(data = traces, layout = layout)
-
-    chart = createChart(plot, saveAs)
-
-    return chart
-
-def scatterChart(data, x, y, group = None, colour = "google", title = "", subtitle = "", saveAs = None):
-    chartType = "Scatter"
-    barMode = None
-    z = None
-    pal = generateColours(colour)
-    
-    traces = evaluateTraceType(chartType, data, x, y, z, pal, group)
-    
-    layout = generateLayout(chartType, barMode, title, subtitle)
-
-    plot = go.Figure(data = traces, layout = layout)
-    
-    chart = createChart(plot, saveAs)
-    
+    chart = alt.Chart(data).mark_bar(size = dims[0]).encode(
+        x = alt.X(x),
+        y = alt.Y(y, stack = stack),
+        color = alt.Color(color),
+        tooltip = data.columns.tolist()
+    ).properties(
+        width = width,
+        height = height
+    ).interactive(
+        bind_y = False
+    )
     return chart
 
 
-def columnChart(data, x, y, group = None, colour = "google", title = "", subtitle = "", saveAs = None, barMode = None):
-    chartType = "Column"
-    barMode = barMode
-    z = None
-    
-    pal = generateColours(colour)
+def lineChart(data, x, y, color, y2 = None, width = dim[0], height = dim[1]):
+    dims = calcSizes(data, x, width)
 
-    traces = evaluateTraceType(chartType, data, x, y, z, pal, group)
-
-    layout = generateLayout(chartType, barMode, title, subtitle)
-
-    plot = go.Figure(data = traces, layout = layout)
-    
-    chart = createChart(plot, saveAs)
-
+    chart = alt.Chart(data).mark_line(size = dims[0]).encode(
+        x = alt.X(x),
+        y = alt.Y(y),
+        color = alt.Color(color),
+        tooltip = data.columns.tolist()
+    ).properties(
+        width = width,
+        height = height
+    ).interactive(
+        bind_y = False
+    )
     return chart
 
-def barChart(data, x, y, group = None, colour = "google", title = "", subtitle = "", saveAs = None):
-    chartType = "Column"
-    barMode = None
-    z = None
-    
-    pal = generateColours(colour)
-    
-    traces = evaluateTraceType(chartType, data, x, y, z, pal, group, orientation = "h")
-    
-    layout = generateLayout(chartType, barMode, title, subtitle)
+def areaChart(data, x, y, color, stack = None, y2 = None, width = dim[0], height = dim[1]):
+    dims = calcSizes(data, x, width)
 
-    plot = go.Figure(data = traces, layout = layout)
+    line = lineChart(data, x, y, color, y2, height, width)
 
-    chart = createChart(plot, saveAs)
- 
-    return chart
-
-
-def histChart(data, x,  group = None, colour = "google", title = "", subtitle = "", saveAs = None):
-    chartType = "Histogram"
-    barMode = "overlay"
-    y = None
-    z = None
-
-    pal = generateColours(colour)
-
-    traces = evaluateTraceType(chartType, data, x, y, z, pal, group)
-
-    layout = generateLayout(chartType, barMode, title = title, subtitle = subtitle)
-
-    plot = go.Figure(data = traces, layout = layout)
-
-    chart = createChart(plot, saveAs)
- 
-    return chart
-
-
-
-def heatmapChart(data, x, y, z,  group = None, title = "", subtitle = "", saveAs = None):
-    chartType = "Heatmap"
-    barMode = None
-    pal = None
-
-    traces = generateTraces(chartType, data, x, y, z, pal)
-
-    layout = generateLayout(chartType, barMode, title = title, subtitle = subtitle)
-
-    plot = go.Figure(data = traces, layout = layout)
-
-    chart = createChart(plot, saveAs)
- 
-    return chart
+    chart = alt.Chart(data).mark_area(opacity = 0.5).encode(
+        x = alt.X(x),
+        y = alt.Y(y, stack = stack),
+        color = alt.Color(color),
+        tooltip = data.columns.tolist()
+    ).properties(
+        width = width,
+        height = height
+    ).interactive(
+        bind_y = False
+    )
+    return chart + line

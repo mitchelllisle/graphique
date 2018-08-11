@@ -11,8 +11,8 @@ from setuptools import setup
 from setuptools.command.install import install
 
 setup(name='napoleon',
-      version='0.16',
-      description='A python package for making plotly simple to get up and running',
+      version='CuteLobster',
+      description='A python package for making Altair plots very simple',
       url='http://github.com/mitchelllisle/napoleon',
       author='Mitchell Lisle',
       author_email='lislemitchell@gmail.com',
