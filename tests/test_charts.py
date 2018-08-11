@@ -22,3 +22,17 @@ def test_lineChart():
        y = 'price',
        color = "symbol")
     assert type(chart) == alt.Chart
+
+def test_barChart():
+    chart = barChart(data = amazonStocks,
+       x = "date",
+       y = 'price',
+       color = "symbol")
+    assert type(chart) == alt.Chart
+
+def test_areaChart():
+    chart = areaChart(data = amazonStocks,
+       x = "date",
+       y = 'price',
+       color = "symbol")
+    assert type(chart) == alt.Chart
