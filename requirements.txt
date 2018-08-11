@@ -1,8 +1,9 @@
-twine
 pytest
 pandas
 numpy
-plotly
 pytest-cov
 codecov
 palettable
+altair
+git+git://github.com/mitchelllisle/martha.git#egg=martha
+git+git://github.com/mitchelllisle/c3p0.git#egg=c3p0

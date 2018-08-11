@@ -1,0 +1,4 @@
+[
+  "tests/test_chartUtils.py::test_calcSizes",
+  "tests/test_charts.py::test_lineChart"
+]
