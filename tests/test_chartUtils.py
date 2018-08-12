@@ -1,6 +1,7 @@
 import pytest
 from napoleon import calcSizes
 from napoleon import determineColorEncoding
+from napoleon import generatePallette
 import numpy as np
 import pandas as pd
 import altair as alt
@@ -22,3 +23,17 @@ def test_determineColorEncoding():
     noColorPassed = determineColorEncoding(None)
     assert type(colorPassed) == alt.Color
     assert type(noColorPassed) == alt.Color
+
+
+def test_determineColorEncoding():
+    colorPassed = determineColorEncoding("stocks")
+    noColorPassed = determineColorEncoding(None)
+    assert type(colorPassed) == alt.Color
+    assert type(noColorPassed) == alt.Color
+
+
+def test_generatePallette():
+    defaultPallette = generatePallette()
+    chosenPallette = generatePallette("IcyImp")
+    assert defaultPallette['name'] == "FastFox"
+    assert chosenPallette['name'] == "IcyImp"
