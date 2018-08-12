@@ -8,6 +8,7 @@ from napoleon import areaChart
 from napoleon import barChart
 
 from napoleon import calcSizes
+from napoleon import determineColorEncoding
 
 # import os
 # os.chdir("/Users/mitchell/Documents/projects/packages/napoleon")

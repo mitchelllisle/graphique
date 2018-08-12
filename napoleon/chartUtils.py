@@ -12,3 +12,10 @@ def calcSizes(data, x, width):
     barSize = (width / xRange)
     padding = (barSize / 2) + 1
     return barSize, padding
+
+def determineColorEncoding(color):
+    if color == None:
+        applyColor = alt.Color()
+    else:
+        applyColor = alt.Color(color)
+    return applyColor
