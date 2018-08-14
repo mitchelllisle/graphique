@@ -19,10 +19,19 @@ import napoleon as nl
 ```
 
 Chart Types:
-```
+```python
 nl.lineChart()
 nl.barChart()
 nl.areaChart()
+nl.scatterChart()
+
+# Coming soon
+nl.hist()
+nl.heatmap()
+nl.boxPlot()
+nl.candleStick()
+nl.streamGraph()
+nl.scatterHist()
 ```
 
 ### Examples
