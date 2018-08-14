@@ -22,7 +22,7 @@ def calcSizes(data, x, width):
     padding = (barSize / 2) + 1
     return barSize, padding
 
-def determineColorEncoding(data, color, palette):
+def determineColorEncoding(data, color = None, palette = None):
     """
     Used internally only. Makes it posible to
     dynamically choose a color or default color
@@ -54,7 +54,7 @@ def generatePallette(name = None):
             "colours" : ['#99D3DF', '#88BBD6', '#CDCDCD', '#E9E9E9']
         }
 
-        IcyImp = {
+        Tableau = {
             "name" : "Tableau",
             "Usage" : "Qualitative",
             "colours" : ['#1F77B4', '#FF7F0E', '#2CA02C', '#D62728', '#9467BD', '#8C564B', '#E377C2', '#7F7F7F', '#BCBD22', '#17BECF']
