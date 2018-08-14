@@ -22,9 +22,12 @@ def test_determineColorEncoding():
     assert type(colorPassed) == alt.Color
     assert type(noColorPassed) == alt.Color
 
-
 def test_generatePallette():
     defaultPallette = generatePallette()
     chosenPallette = generatePallette("IcyImp")
     assert defaultPallette['name'] == "Tableau"
     assert chosenPallette['name'] == "IcyImp"
+    try:
+        generatePallette("NotAPalette")
+    except Exception as e:
+        assert str(e) == "Name 'NotAPalette' not recognised. Must be one of FastFox, IcyImp"
