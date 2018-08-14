@@ -59,6 +59,13 @@ def generatePallette(name = None):
             "Usage" : "Qualitative",
             "colours" : ['#1F77B4', '#FF7F0E', '#2CA02C', '#D62728', '#9467BD', '#8C564B', '#E377C2', '#7F7F7F', '#BCBD22', '#17BECF']
         }
+        
+        BigDatr = {
+            "name" : "BigDatr",
+            "Usage" : "Qualitative",
+            "colours" : ['#FAD748', '#2F6289', '#AA86FC', '#F2BD67', '#A3D369', '#24B4ED', '#B9D9FF', '#FD6A66', '#B74946']
+        }
+     
         return eval(name)
     except NameError as err:
         raise Exception("Name '" + name + "' not recognised. Must be one of FastFox, IcyImp")
