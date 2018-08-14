@@ -11,7 +11,7 @@ import pandas as pd
 
 dim = [1000, 400]
 
-def barChart(data, x, y, color = None, stack = "zero", y2 = None, width = dim[0], height = dim[1]):
+def barChart(data, x, y, color = None, stack = "zero", y2 = None, width = dim[0], height = dim[1], palette = "FastFox"):
     """
     barChart(data, "date:T", "price:Q")
     """
@@ -20,7 +20,7 @@ def barChart(data, x, y, color = None, stack = "zero", y2 = None, width = dim[0]
     chart = alt.Chart(data).mark_bar(size = dims[0]).encode(
         x = alt.X(x),
         y = alt.Y(y, stack = stack),
-        color = determineColorEncoding(color),
+        color = determineColorEncoding(data, color, palette),
         tooltip = data.columns.tolist()
     ).properties(
         width = width,

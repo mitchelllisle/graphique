@@ -3,22 +3,26 @@ import c3p0
 import martha
 import pandas as pd
 
+def removeExplicitTypes(x):
+    types = [":T", ":Q", ":O", ":N"]
+    for type in types:
+        x = x.replace(type, "")
+    return x
+
 def calcSizes(data, x, width):
     """
     User in bar chart to make sure the barsizes
     are consistent with the amount of data that is
     passed.
     """
-    types = [":T", ":Q", ":O", ":N"]
-    for type in types:
-        x = x.replace(type, "")
+    cleanX = removeExplicitTypes(x)
 
-    xRange = len(data[x].unique())
+    xRange = len(data[cleanX].unique())
     barSize = (width / xRange)
     padding = (barSize / 2) + 1
     return barSize, padding
 
-def determineColorEncoding(color):
+def determineColorEncoding(data, color, palette):
     """
     Used internally only. Makes it posible to
     dynamically choose a color or default color
@@ -27,13 +31,16 @@ def determineColorEncoding(color):
     if color == None:
         applyColor = alt.Color()
     else:
-        applyColor = alt.Color(color)
+        palette = generatePallette(palette)
+        cleanColor = removeExplicitTypes(color)
+        domainToApply = data[cleanColor].unique().tolist()
+        applyColor = alt.Color(cleanColor, scale=alt.Scale(domain = domainToApply, range = palette['colours']))
     return applyColor
 
 def generatePallette(name = None):
     try:
         if name == None:
-            name = "FastFox"
+            name = "Tableau"
 
         FastFox = {
             "name" : "FastFox",
@@ -45,6 +52,12 @@ def generatePallette(name = None):
             "name" : "IcyImp",
             "Usage" : "Qualitative",
             "colours" : ['#99D3DF', '#88BBD6', '#CDCDCD', '#E9E9E9']
+        }
+
+        IcyImp = {
+            "name" : "Tableau",
+            "Usage" : "Qualitative",
+            "colours" : ['#1F77B4', '#FF7F0E', '#2CA02C', '#D62728', '#9467BD', '#8C564B', '#E377C2', '#7F7F7F', '#BCBD22', '#17BECF']
         }
         return eval(name)
     except NameError as err:
