@@ -11,7 +11,7 @@ import pandas as pd
 
 dim = [1000, 400]
 
-def barChart(data, x, y, color = None, stack = "zero", y2 = None, width = dim[0], height = dim[1]):
+def barChart(data, x, y, color = None, stack = "zero", y2 = None, width = dim[0], height = dim[1], palette = "Tableau"):
     """
     barChart(data, "date:T", "price:Q")
     """
@@ -20,7 +20,7 @@ def barChart(data, x, y, color = None, stack = "zero", y2 = None, width = dim[0]
     chart = alt.Chart(data).mark_bar(size = dims[0]).encode(
         x = alt.X(x),
         y = alt.Y(y, stack = stack),
-        color = determineColorEncoding(color),
+        color = determineColorEncoding(data, color, palette),
         tooltip = data.columns.tolist()
     ).properties(
         width = width,
@@ -30,7 +30,7 @@ def barChart(data, x, y, color = None, stack = "zero", y2 = None, width = dim[0]
     )
     return chart
 
-def lineChart(data, x, y, color = None, stack = None, y2 = None, width = dim[0], height = dim[1]):
+def lineChart(data, x, y, color = None, stack = None, y2 = None, width = dim[0], height = dim[1], palette = "Tableau"):
     """
     lineChart(data, "date:T", "price:Q", "symbol")
     """
@@ -39,7 +39,7 @@ def lineChart(data, x, y, color = None, stack = None, y2 = None, width = dim[0],
     chart = alt.Chart(data).mark_line(size = dims[0]).encode(
         x = alt.X(x),
         y = alt.Y(y, stack = stack),
-        color = determineColorEncoding(color),
+        color = determineColorEncoding(data, color, palette),
         tooltip = data.columns.tolist()
     ).properties(
         width = width,
@@ -49,7 +49,7 @@ def lineChart(data, x, y, color = None, stack = None, y2 = None, width = dim[0],
     )
     return chart
 
-def areaChart(data, x, y, color = None, stack = None, y2 = None, width = dim[0], height = dim[1]):
+def areaChart(data, x, y, color = None, stack = None, y2 = None, width = dim[0], height = dim[1], palette = "Tableau"):
     """
     areaChart(data, "date:T", "price:Q", "symbol:N")
     """
@@ -58,7 +58,7 @@ def areaChart(data, x, y, color = None, stack = None, y2 = None, width = dim[0],
     chart = alt.Chart(data).mark_area(opacity = 0.5).encode(
         x = alt.X(x),
         y = alt.Y(y, stack = stack),
-        color = determineColorEncoding(color),
+        color = determineColorEncoding(data, color, palette),
         tooltip = data.columns.tolist()
     ).properties(
         width = width,
