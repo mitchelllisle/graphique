@@ -40,6 +40,7 @@ nl.scatterHist()
 from vega_datasets import data
 
 stocks = data.stocks()
-amazonStocks = stocks.query("symbol == 'AMZN'")
 
+nl.lineChart(stocks, x = "date:T", y = "price:Q", color = "symbol")
 ```
+![visualization](https://user-images.githubusercontent.com/18128531/44091662-8af9df28-a011-11e8-8bb5-1b8a9db357a1.png)
