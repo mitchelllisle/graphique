@@ -3,10 +3,10 @@ import pytest
 import numpy as np
 import pandas as pd
 
-from napoleon import lineChart
-from napoleon import areaChart
-from napoleon import barChart
-from napoleon import scatterChart
+from napoleon import line
+from napoleon import area
+from napoleon import bar
+from napoleon import scatter
 
 from napoleon import calcSizes
 from napoleon import determineColorEncoding
@@ -18,29 +18,29 @@ stocks = pd.read_csv("data/stocks.csv")
 amazonStocks = stocks.query("symbol == 'AMZN'")
 uberData = pd.read_csv("data/uberData.csv")
 
-def test_lineChart():
-    chart = lineChart(data = amazonStocks,
+def test_line():
+    chart = line(data = amazonStocks,
        x = "date",
        y = 'price',
        color = "symbol")
     assert type(chart) == alt.Chart
 
-def test_barChart():
-    chart = barChart(data = amazonStocks,
+def test_bar():
+    chart = bar(data = amazonStocks,
        x = "date",
        y = 'price',
        color = "symbol")
     assert type(chart) == alt.Chart
 
-def test_scatterChart():
-    chart = scatterChart(data = amazonStocks,
+def test_scatter():
+    chart = scatter(data = amazonStocks,
        x = "date",
        y = 'price',
        color = "symbol")
     assert type(chart) == alt.Chart
 
-def test_areaChart():
-    chart = areaChart(data = amazonStocks,
+def test_area():
+    chart = area(data = amazonStocks,
        x = "date",
        y = 'price',
        color = "symbol")

@@ -1,7 +1,7 @@
-from .charts import lineChart
-from .charts import areaChart
-from .charts import barChart
-from .charts import scatterChart
+from .charts import line
+from .charts import area
+from .charts import bar
+from .charts import scatter
 
 from .chartUtils import calcSizes
 from .chartUtils import determineColorEncoding

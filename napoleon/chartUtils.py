@@ -63,7 +63,7 @@ def generatePallette(name = None):
         BigDatr = {
             "name" : "BigDatr",
             "Usage" : "Qualitative",
-            "colours" : ['#FAD748', '#2F6289', '#AA86FC', '#F2BD67', '#A3D369', '#24B4ED', '#B9D9FF', '#FD6A66', '#B74946']
+            "colours" : ['#FAD748', '#FD6A66', '#2F6289', '#AA86FC', '#F2BD67', '#A3D369', '#24B4ED', '#B9D9FF', '#B74946']
         }
 
         return eval(name)
