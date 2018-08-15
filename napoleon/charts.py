@@ -63,7 +63,7 @@ def scatter(data, x, y, color = None, stack = None, y2 = None, width = dim[0], h
 def area(data, x, y, color = None, stack = None, y2 = None, width = dim[0], height = dim[1], palette = "Tableau"):
     dims = calcSizes(data, x, width)
 
-    chart = alt.Chart(data).mark_area(opacity = 0.5).encode(
+    areaChart = alt.Chart(data).mark_area(opacity = 0.5).encode(
         x = alt.X(x),
         y = alt.Y(y, stack = stack),
         color = determineColorEncoding(data, color, palette),
@@ -76,6 +76,6 @@ def area(data, x, y, color = None, stack = None, y2 = None, width = dim[0], heig
     )
 
     if stack != 'normalize':
-        line = lineChart(data, x, y, color, y2, height, width)
-        chart = chart + line
+        lineChart = line(data, x, y, color, y2, height, width)
+        chart = areaChart + lineChart
     return chart
