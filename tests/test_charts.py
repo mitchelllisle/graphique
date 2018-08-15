@@ -6,6 +6,7 @@ import pandas as pd
 from napoleon import lineChart
 from napoleon import areaChart
 from napoleon import barChart
+from napoleon import scatterChart
 
 from napoleon import calcSizes
 from napoleon import determineColorEncoding
@@ -26,6 +27,13 @@ def test_lineChart():
 
 def test_barChart():
     chart = barChart(data = amazonStocks,
+       x = "date",
+       y = 'price',
+       color = "symbol")
+    assert type(chart) == alt.Chart
+
+def test_scatterChart():
+    chart = scatterChart(data = amazonStocks,
        x = "date",
        y = 'price',
        color = "symbol")

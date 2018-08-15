@@ -25,9 +25,13 @@ def test_determineColorEncoding():
 def test_generatePallette():
     defaultPallette = generatePallette()
     chosenPallette = generatePallette("IcyImp")
+    chosenPallette1 = generatePallette("FastFox")
+    chosenPallette2 = generatePallette("BigDatr")
     assert defaultPallette['name'] == "Tableau"
     assert chosenPallette['name'] == "IcyImp"
+    assert chosenPallette1['name'] == "FastFox"
+    assert chosenPallette2['name'] == "BigDatr"
     try:
         generatePallette("NotAPalette")
     except Exception as e:
-        assert str(e) == "Name 'NotAPalette' not recognised. Must be one of FastFox, IcyImp"
+        assert type(e) == ValueError
