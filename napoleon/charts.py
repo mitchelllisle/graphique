@@ -44,10 +44,8 @@ def line(data, x, y, color = None, stack = None, y2 = None, width = dim[0], heig
     return chart
 
 
-def scatter(data, x, y, color = None, stack = None, y2 = None, width = dim[0], height = dim[1], palette = "Tableau"):
-    dims = calcSizes(data, x, width)
-
-    chart = alt.Chart(data).mark_circle(size = dims[0]).encode(
+def scatter(data, x, y, color = None, stack = None, size = 500, y2 = None, width = dim[0], height = dim[1], palette = "Tableau"):
+    chart = alt.Chart(data).mark_circle(size = size).encode(
         x = alt.X(x),
         y = alt.Y(y, stack = stack),
         color = determineColorEncoding(data, color, palette),
