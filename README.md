@@ -56,3 +56,4 @@ scatterData.columns = ['symbol', 'mean', 'max']
 
 scatter(data = scatterData, x = "symbol", y = 'mean', color = "symbol", size = "max")
 ```
+![visualization](https://user-images.githubusercontent.com/18128531/44295509-a4c31f80-a2ed-11e8-8db1-b256e45f2499.png)
