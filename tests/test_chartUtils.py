@@ -28,6 +28,10 @@ def test_sizeEval():
     sizeResultsField = sizeEval(stocks, "price", [0,1000])
     assert sizeResults['value'] == 5000
     assert type(sizeResultsField) == alt.Size
+    try:
+        sizeEval(stocks, "NotAField", [0,1])
+    except Exception as e:
+        assert type(e) == ValueError
 
 def test_generatePallette():
     defaultPallette = generatePallette()

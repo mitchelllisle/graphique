@@ -24,16 +24,15 @@ def calcSizes(data, x, width):
     return barSize, padding
 
 def sizeEval(data, size, range):
-    try:
-        if type(size) == np.int:
-            computedSize = alt.value(size)
-            return computedSize
-        elif size in data.columns:
-            cleanSize = removeExplicitTypes(size)
-            computedSize = alt.Size(cleanSize, type = "quantitative", scale=alt.Scale(range=range))
-            return computedSize
-    except Exception as e:
-        raise Exception(str(e))
+    if type(size) == np.int:
+        computedSize = alt.value(size)
+        return computedSize
+    elif size in data.columns:
+        cleanSize = removeExplicitTypes(size)
+        computedSize = alt.Size(cleanSize, type = "quantitative", scale=alt.Scale(range=range))
+        return computedSize
+    else:
+        raise ValueError("Couldn't parse size argument. Must either an integer or a field in the data provided.")
 
 def determineColorEncoding(data, color = None, palette = None):
     """
