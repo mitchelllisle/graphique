@@ -2,6 +2,7 @@ import pytest
 from napoleon import calcSizes
 from napoleon import determineColorEncoding
 from napoleon import generatePallette
+from napoleon import sizeEval
 import numpy as np
 import pandas as pd
 import altair as alt
@@ -21,6 +22,12 @@ def test_determineColorEncoding():
     noColorPassed = determineColorEncoding(None)
     assert type(colorPassed) == alt.Color
     assert type(noColorPassed) == alt.Color
+
+def test_sizeEval():
+    sizeResults = sizeEval(stocks, 5000, [0,1000])
+    sizeResultsField = sizeEval(stocks, "price", [0,1000])
+    assert sizeResults['value'] == 5000
+    assert type(sizeResultsField) == alt.Size
 
 def test_generatePallette():
     defaultPallette = generatePallette()
