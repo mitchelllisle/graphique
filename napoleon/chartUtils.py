@@ -2,6 +2,7 @@ import altair as alt
 import c3p0
 import martha
 import pandas as pd
+import numpy as np
 
 def removeExplicitTypes(x):
     types = [":T", ":Q", ":O", ":N"]
@@ -21,6 +22,18 @@ def calcSizes(data, x, width):
     barSize = (width / xRange)
     padding = (barSize / 2) + 1
     return barSize, padding
+
+def sizeEval(data, size, range):
+    try:
+        if type(size) == np.int:
+            computedSize = alt.value(size)
+            return computedSize
+        elif size in data.columns:
+            cleanSize = removeExplicitTypes(size)
+            computedSize = alt.Size(cleanSize, type = "quantitative", scale=alt.Scale(range=range))
+            return computedSize
+    except Exception as e:
+        raise Exception(str(e))
 
 def determineColorEncoding(data, color = None, palette = None):
     """
