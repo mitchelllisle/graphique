@@ -6,3 +6,4 @@ from .charts import scatter
 from .chartUtils import calcSizes
 from .chartUtils import determineColorEncoding
 from .chartUtils import generatePallette
+from .chartUtils import sizeEval

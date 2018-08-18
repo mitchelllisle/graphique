@@ -1,9 +1,11 @@
 from .chartUtils import calcSizes
 from .chartUtils import determineColorEncoding
+from .chartUtils import sizeEval
 import altair as alt
 import c3p0
 import martha
 import pandas as pd
+import numpy as np
 
 # import os
 # os.chdir("/Users/mitchell/Documents/projects/packages/napoleon")
@@ -43,13 +45,13 @@ def line(data, x, y, color = None, stack = None, y2 = None, width = dim[0], heig
     )
     return chart
 
-
-def scatter(data, x, y, color = None, stack = None, size = 500, y2 = None, width = dim[0], height = dim[1], palette = "Tableau"):
-    chart = alt.Chart(data).mark_circle(size = size).encode(
+def scatter(data, x, y, color = None, size = 500, range = [0,5000], stack = None, y2 = None, width = dim[0], height = dim[1], palette = "Tableau"):
+    chart = alt.Chart(data).mark_circle().encode(
         x = alt.X(x),
         y = alt.Y(y, stack = stack),
         color = determineColorEncoding(data, color, palette),
-        tooltip = data.columns.tolist()
+        tooltip = data.columns.tolist(),
+        size = sizeEval(data, size, range)
     ).properties(
         width = width,
         height = height

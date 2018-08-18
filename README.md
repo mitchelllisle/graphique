@@ -41,6 +41,18 @@ from vega_datasets import data
 
 stocks = data.stocks()
 
-nl.line(stocks, x = "date:T", y = "price:Q", color = "symbol")
+nl.line(data = stocks, x = "date:T", y = "price:Q", color = "symbol")
 ```
 ![visualization](https://user-images.githubusercontent.com/18128531/44091662-8af9df28-a011-11e8-8bb5-1b8a9db357a1.png)
+
+
+```python
+from vega_datasets import data
+
+stocks = data.stocks()
+
+scatterData = stocks.groupby("symbol").agg({"price" : ["mean", "max"]}).reset_index()
+scatterData.columns = ['symbol', 'mean', 'max']
+
+scatter(data = scatterData, x = "symbol", y = 'mean', color = "symbol", size = "max")
+```

@@ -33,10 +33,14 @@ def test_bar():
     assert type(chart) == alt.Chart
 
 def test_scatter():
-    chart = scatter(data = amazonStocks,
-       x = "date",
-       y = 'price',
-       color = "symbol")
+    scatterData = stocks.groupby("symbol").agg({"price" : ["mean", "max"]}).reset_index()
+    scatterData.columns = ['symbol', 'mean', 'max']
+
+    chart = scatter(data = scatterData,
+       x = "symbol",
+       y = 'mean',
+       color = "symbol",
+       size = "max")
     assert type(chart) == alt.Chart
 
 def test_area():
