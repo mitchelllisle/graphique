@@ -40,9 +40,9 @@ def determineColorEncoding(data, color = None, palette = None):
     dynamically choose a color or default color
     in any chart.
     """
-    if (color == None and palette == None):
+    if color == None:
         applyColor = alt.Color()
-    elif palette = None:
+    elif palette = None and color != None:
         applyColor = alt.Color(color)
     else:
         palette = generatePallette(palette)
