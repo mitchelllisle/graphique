@@ -42,7 +42,7 @@ def determineColorEncoding(data, color = None, palette = None):
     """
     if color == None:
         applyColor = alt.Color()
-    elif palette = None and color != None:
+    elif palette == None and color != None:
         applyColor = alt.Color(color)
     else:
         palette = generatePallette(palette)
