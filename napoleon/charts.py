@@ -13,7 +13,7 @@ import numpy as np
 
 dim = [1000, 400]
 
-def bar(data, x, y, color = None, stack = "zero", y2 = None, width = dim[0], height = dim[1], palette = "Tableau"):
+def bar(data, x, y, color = None, stack = "zero", y2 = None, width = dim[0], height = dim[1], palette = None):
     dims = calcSizes(data, x, width)
 
     chart = alt.Chart(data).mark_bar(size = dims[0]).encode(
@@ -29,7 +29,7 @@ def bar(data, x, y, color = None, stack = "zero", y2 = None, width = dim[0], hei
     )
     return chart
 
-def line(data, x, y, color = None, stack = None, y2 = None, width = dim[0], height = dim[1], palette = "Tableau"):
+def line(data, x, y, color = None, stack = None, y2 = None, width = dim[0], height = dim[1], palette = None):
     dims = calcSizes(data, x, width)
 
     chart = alt.Chart(data).mark_line(size = dims[0]).encode(
@@ -45,7 +45,7 @@ def line(data, x, y, color = None, stack = None, y2 = None, width = dim[0], heig
     )
     return chart
 
-def scatter(data, x, y, color = None, size = 500, range = [0,5000], stack = None, y2 = None, width = dim[0], height = dim[1], palette = "Tableau"):
+def scatter(data, x, y, color = None, size = 500, range = [0,5000], stack = None, y2 = None, width = dim[0], height = dim[1], palette = None):
     chart = alt.Chart(data).mark_circle().encode(
         x = alt.X(x),
         y = alt.Y(y, stack = stack),
@@ -60,7 +60,7 @@ def scatter(data, x, y, color = None, size = 500, range = [0,5000], stack = None
     )
     return chart
 
-def area(data, x, y, color = None, stack = None, y2 = None, width = dim[0], height = dim[1], palette = "Tableau"):
+def area(data, x, y, color = None, stack = None, y2 = None, width = dim[0], height = dim[1], palette = None):
     dims = calcSizes(data, x, width)
 
     areaChart = alt.Chart(data).mark_area(opacity = 0.5).encode(
