@@ -42,6 +42,8 @@ def determineColorEncoding(data, color = None, palette = None):
     """
     if color == None:
         applyColor = alt.Color()
+    elif palette == None and color not in data.columns:
+        applyColor = alt.ColorValue(color)
     else:
         palette = generatePallette(palette)
         cleanColor = removeExplicitTypes(color)
