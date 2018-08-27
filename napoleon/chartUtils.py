@@ -3,6 +3,7 @@ import c3p0
 import martha
 import pandas as pd
 import numpy as np
+import random
 
 def removeExplicitTypes(x):
     types = [":T", ":Q", ":O", ":N"]
@@ -45,16 +46,48 @@ def determineColorEncoding(data, color = None, palette = None):
     elif palette == None and color not in data.columns:
         applyColor = alt.ColorValue(color)
     else:
-        palette = generatePallette(palette)
         cleanColor = removeExplicitTypes(color)
+        palette = generatePallette(palette, len(data[cleanColor].unique().tolist()))
         domainToApply = data[cleanColor].unique().tolist()
         applyColor = alt.Color(cleanColor, scale=alt.Scale(domain = domainToApply, range = palette['colours']))
     return applyColor
 
-def generatePallette(name = None):
+
+def colors(n):
+  ret = []
+  r = int(random.random() * 256)
+  g = int(random.random() * 256)
+  b = int(random.random() * 256)
+  step = 256 / n
+  for i in range(n):
+    r += step
+    g += step
+    b += step
+    r = int(r) % 256
+    g = int(g) % 256
+    b = int(b) % 256
+    ret.append((r,g,b))
+    hexes = rgbToHex(ret)
+  return hexes
+
+def rgbToHex(rgbs):
+    hexes = []
+    for rgb in rgbs:
+        hex = '#%02x%02x%02x' % rgb
+        hexes.append((hex))
+    return hexes
+
+def generatePallette(name = "Random", n = 10):
     try:
         if name == None:
             name = "Tableau"
+
+        Random = {
+                "name" : "Randomly Generated Palette",
+                "Usage" : "Misc",
+                "colours" : colors(n)
+
+        }
 
         FastFox = {
             "name" : "FastFox",
