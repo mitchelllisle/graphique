@@ -7,3 +7,7 @@ from .chartUtils import calcSizes
 from .chartUtils import determineColorEncoding
 from .chartUtils import generatePallette
 from .chartUtils import sizeEval
+
+from .themes import greyTheme
+from .themes import darkTheme
+from .themes import activateTheme
