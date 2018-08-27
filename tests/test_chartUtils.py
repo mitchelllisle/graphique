@@ -38,7 +38,7 @@ def test_generatePallette():
     chosenPallette = generatePallette("IcyImp")
     chosenPallette1 = generatePallette("FastFox")
     chosenPallette2 = generatePallette("BigDatr")
-    assert defaultPallette['name'] == "Tableau"
+    assert defaultPallette['name'] == "Randomly Generated Palette"
     assert chosenPallette['name'] == "IcyImp"
     assert chosenPallette1['name'] == "FastFox"
     assert chosenPallette2['name'] == "BigDatr"

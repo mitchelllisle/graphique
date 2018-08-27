@@ -46,8 +46,8 @@ def determineColorEncoding(data, color = None, palette = None):
     elif palette == None and color not in data.columns:
         applyColor = alt.ColorValue(color)
     else:
-        palette = generatePallette(palette)
-        cleanColor = removeExplicitTypes(color, len(data[cleanColor].unique().tolist()))
+        cleanColor = removeExplicitTypes(color)
+        palette = generatePallette(palette, len(data[cleanColor].unique().tolist()))
         domainToApply = data[cleanColor].unique().tolist()
         applyColor = alt.Color(cleanColor, scale=alt.Scale(domain = domainToApply, range = palette['colours']))
     return applyColor
@@ -79,6 +79,9 @@ def rgbToHex(rgbs):
 
 def generatePallette(name = "Random", n = 10):
     try:
+        if name == None:
+            name = "Tableau"
+
         Random = {
                 "name" : "Randomly Generated Palette",
                 "Usage" : "Misc",
