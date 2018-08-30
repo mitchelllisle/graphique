@@ -7,6 +7,7 @@ from napoleon import line
 from napoleon import area
 from napoleon import bar
 from napoleon import scatter
+from napoleon import hist
 
 from napoleon import calcSizes
 from napoleon import determineColorEncoding
@@ -29,6 +30,12 @@ def test_bar():
     chart = bar(data = amazonStocks,
        x = "date",
        y = 'price',
+       color = "symbol")
+    assert type(chart) == alt.Chart
+
+def test_hist():
+    chart = hist(data = amazonStocks,
+       x = "date",
        color = "symbol")
     assert type(chart) == alt.Chart
 

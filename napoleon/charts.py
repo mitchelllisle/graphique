@@ -29,6 +29,25 @@ def bar(data, x, y, color = None, stack = "zero", y2 = None, width = dim[0], hei
     )
     return chart
 
+def hist(data, x, color = None, bins = 100, width = dim[0], height = dim[1], palette = None):
+    dims = calcSizes(data, x, width)
+
+    chart = alt.Chart(data).mark_area(
+        opacity=0.3,
+        interpolate='step'
+    ).encode(
+        x = alt.X(x, bin=alt.Bin(maxbins = bins)),
+        y = alt.Y("count()", stack = None),
+        color = determineColorEncoding(data, color, palette),
+        tooltip = ["count()"]
+    ).properties(
+        width = width,
+        height = height
+    ).interactive(
+        bind_y = False
+)
+    return chart
+
 def line(data, x, y, color = None, stack = None, y2 = None, width = dim[0], height = dim[1], palette = None):
     dims = calcSizes(data, x, width)
 

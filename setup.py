@@ -11,7 +11,7 @@ from setuptools import setup
 from setuptools.command.install import install
 
 setup(name='napoleon',
-      version='HeftyDragon',
+      version='HappyGoLuckyAnt',
       description='A python package for making Altair plots very simple',
       url='http://github.com/mitchelllisle/napoleon',
       author='Mitchell Lisle',
