@@ -57,3 +57,22 @@ scatterData.columns = ['symbol', 'mean', 'max']
 scatter(data = scatterData, x = "symbol", y = 'mean', color = "symbol", size = "max")
 ```
 ![visualization](https://user-images.githubusercontent.com/18128531/44295509-a4c31f80-a2ed-11e8-8db1-b256e45f2499.png)
+
+
+```python
+import numpy as np
+import pandas as pd
+import napoleon as nl
+
+df = pd.DataFrame({'Trial A': np.random.normal(0, 0.8, 1000),
+                   'Trial B': np.random.normal(-2, 1, 1000),
+                   'Trial C': np.random.normal(3, 2, 1000)})
+
+df = pd.melt(df, id_vars=df.index.name,
+             value_vars=df.columns,
+             var_name='Experiment',
+             value_name='Measurement')
+
+nl.hist(df, 'Measurement', color = 'Experiment', bins = 100)
+```
+![visualization](https://user-images.githubusercontent.com/18128531/44845601-515bb480-ac91-11e8-93cb-f0aa7bd93822.png)
