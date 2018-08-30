@@ -2,6 +2,7 @@ from .charts import line
 from .charts import area
 from .charts import bar
 from .charts import scatter
+from .charts import hist
 
 from .chartUtils import calcSizes
 from .chartUtils import determineColorEncoding
