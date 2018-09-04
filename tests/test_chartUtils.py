@@ -20,8 +20,10 @@ def test_calcSizes():
 def test_determineColorEncoding():
     colorPassed = determineColorEncoding(stocks, "symbol", "Tableau")
     noColorPassed = determineColorEncoding(None)
+    noColorOrPalettePassed = determineColorEncoding(stocks, "#TESTCOLOR", None)
     assert type(colorPassed) == alt.Color
     assert type(noColorPassed) == alt.Color
+    assert type(noColorOrPalettePassed) == alt.ColorValue
 
 def test_sizeEval():
     sizeResults = sizeEval(stocks, 5000, [0,1000])

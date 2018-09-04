@@ -15,10 +15,6 @@ from napoleon import determineColorEncoding
 # import os
 # os.chdir("/Users/mitchell/Documents/projects/packages/napoleon")
 
-stocks = pd.read_csv("data/stocks.csv")
-amazonStocks = stocks.query("symbol == 'AMZN'")
-uberData = pd.read_csv("data/uberData.csv")
-
 def test_darkTheme():
     themeActive = activateTheme("darkTheme")()
     assert themeActive == darkTheme()
@@ -26,3 +22,9 @@ def test_darkTheme():
 def test_greyTheme():
     themeActive = activateTheme("greyTheme")()
     assert themeActive == greyTheme()
+
+def test_wrongTheme():
+    try:
+        activateTheme("NONE")()
+    except Exception as e:
+        assert type(e) == Exception
