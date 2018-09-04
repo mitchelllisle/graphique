@@ -8,6 +8,8 @@ from napoleon import area
 from napoleon import bar
 from napoleon import scatter
 from napoleon import hist
+from napoleon import boxplot
+from napoleon import heatmap
 
 from napoleon import calcSizes
 from napoleon import determineColorEncoding
@@ -18,6 +20,7 @@ from napoleon import determineColorEncoding
 stocks = pd.read_csv("data/stocks.csv")
 amazonStocks = stocks.query("symbol == 'AMZN'")
 uberData = pd.read_csv("data/uberData.csv")
+tameImpala = pd.read_csv("data/tameImpalaSongs.csv")
 
 def test_line():
     chart = line(data = amazonStocks,
@@ -39,6 +42,13 @@ def test_hist():
        color = "symbol")
     assert type(chart) == alt.Chart
 
+def test_heatmap():
+    chart = heatmap(data = stocks,
+       x = "date",
+       y = "price",
+       color = "symbol")
+    assert type(chart) == alt.Chart
+
 def test_scatter():
     scatterData = stocks.groupby("symbol").agg({"price" : ["mean", "max"]}).reset_index()
     scatterData.columns = ['symbol', 'mean', 'max']
@@ -55,4 +65,11 @@ def test_area():
        x = "date",
        y = 'price',
        color = "symbol")
+    assert type(chart) == alt.LayerChart
+
+def test_boxplot():
+    chart = boxplot(data = tameImpala,
+       x = "album_name",
+       y = 'duration_ms',
+       color = "album_release_year")
     assert type(chart) == alt.LayerChart

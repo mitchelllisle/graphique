@@ -3,6 +3,8 @@ from .charts import area
 from .charts import bar
 from .charts import scatter
 from .charts import hist
+from .charts import heatmap
+from .charts import boxplot
 
 from .chartUtils import calcSizes
 from .chartUtils import determineColorEncoding

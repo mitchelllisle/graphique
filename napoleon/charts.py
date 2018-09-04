@@ -9,7 +9,7 @@ import numpy as np
 
 # import os
 # os.chdir("/Users/mitchell/Documents/projects/packages/napoleon")
-# data = pd.read_csv("data/stocks.csv")
+# data = pd.read_csv("data/tameImpalaSongs.csv")
 
 dim = [1000, 400]
 
@@ -97,4 +97,72 @@ def area(data, x, y, color = None, stack = None, y2 = None, width = dim[0], heig
     if stack != 'normalize':
         lineChart = line(data, x, y, color, y2, height, width)
         chart = areaChart + lineChart
+    return chart
+
+def heatmap(data, x, y, color, width = dim[0], height = dim[1], palette = None):
+    chart = alt.Chart(data).mark_rect().encode(
+        x = alt.X(x),
+        y = alt.Y(y),
+        color = alt.Color(color, scale=alt.Scale(scheme='greenblue')),
+        tooltip = data.columns.tolist()
+    ).properties(
+        width = width,
+        height = height
+    ).interactive(
+        bind_y = False
+    )
+    return chart
+
+def boxplot(data, x, y, color = None, xtype='N', ytype='Q', size = 40, width = dim[0], height = dim[1], palette = None):
+    # Define variables and their types using f-strings in Python
+    lower_box=f'q1({y}):{ytype}'
+    lower_whisker=f'min({y}):{ytype}'
+    upper_box=f'q3({y}):{ytype}'
+    upper_whisker=f'max({y}):{ytype}'
+    median_whisker=f'median({y}):{ytype}'
+    x_data=f'{x}:{xtype}'
+
+    # lower plot
+    lower_plot = alt.Chart(data).mark_rule().encode(
+        y = alt.Y(lower_whisker, axis=alt.Axis(title=y)),
+        y2 = lower_box,
+        x = x_data
+    ).properties(
+        width = width,
+        height = height
+    )
+    # middle plot
+    middle_plot = alt.Chart(data).mark_bar(size=size).encode(
+        y=lower_box,
+        y2=upper_box,
+        x = x_data,
+        color = determineColorEncoding(data, color, palette),
+        tooltip = [x, lower_box, lower_whisker, upper_box, upper_whisker, median_whisker]
+    ).properties(
+        width = width,
+        height = height
+    )
+
+    # upper plot
+    upper_plot = alt.Chart(data).mark_rule().encode(
+        y=upper_whisker,
+        y2=upper_box,
+        x=x_data
+    ).properties(
+        width = width,
+        height = height
+    )
+
+    # median marker line
+    middle_tick = alt.Chart(data).mark_tick(
+        color='white',
+        size=size
+    ).encode(
+        y=median_whisker,
+        x=x_data,
+    )
+    # combine all the elements of boxplot to a single chart object
+    chart = lower_plot + middle_plot + upper_plot + middle_tick
+
+    # return chart object
     return chart

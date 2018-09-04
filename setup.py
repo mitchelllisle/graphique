@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-:copyright: (c) 2017 by Lev Lazinskiy
+:copyright: (c) 2018 by Mitchell Lisle
 :license: MIT, see LICENSE for more details.
 """
 import os
@@ -11,7 +11,7 @@ from setuptools import setup
 from setuptools.command.install import install
 
 setup(name='napoleon',
-      version='HappyGoLuckyAnt',
+      version='MysteriousGoanna',
       description='A python package for making Altair plots very simple',
       url='http://github.com/mitchelllisle/napoleon',
       author='Mitchell Lisle',
