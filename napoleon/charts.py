@@ -2,7 +2,6 @@ from .chartUtils import calcSizes
 from .chartUtils import determineColorEncoding
 from .chartUtils import sizeEval
 import altair as alt
-import c3p0
 import martha
 import pandas as pd
 import numpy as np
