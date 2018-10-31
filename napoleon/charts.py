@@ -74,7 +74,7 @@ def scatter(data, x, y, color = None, size = 500, range = [0,5000], stack = None
         width = width,
         height = height
     ).interactive(
-        bind_y = False
+        bind_y = True
     )
     return chart
 
