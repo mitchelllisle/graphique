@@ -9,6 +9,7 @@ import numpy as np
 # import os
 # os.chdir("/Users/mitchell/Documents/projects/packages/napoleon")
 # data = pd.read_csv("data/tameImpalaSongs.csv")
+# data = data.groupby(["key_mode", "album_name"]).agg({"artist_name" : "count"}).reset_index()
 
 dim = [1000, 400]
 

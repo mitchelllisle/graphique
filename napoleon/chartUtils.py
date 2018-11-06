@@ -19,7 +19,7 @@ def calcSizes(data, x, width):
     cleanX = removeExplicitTypes(x)
 
     xRange = len(data[cleanX].unique())
-    barSize = (width / xRange)
+    barSize = (width / xRange) - 1
     padding = (barSize / 2) + 1
     return barSize, padding
 
