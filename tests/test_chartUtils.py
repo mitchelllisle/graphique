@@ -14,7 +14,7 @@ stocks = pd.read_csv("data/stocks.csv")
 
 def test_calcSizes():
     chartDims = calcSizes(stocks, "date", 1000)
-    assert chartDims[0] == 8.130081300813009
+    assert chartDims[0] == 7.130081300813009
     assert chartDims[1] == 5.065040650406504
 
 def test_determineColorEncoding():
