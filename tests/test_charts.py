@@ -8,7 +8,7 @@ from napoleon import area
 from napoleon import bar
 from napoleon import scatter
 from napoleon import hist
-from napoleon import boxplot
+# from napoleon import boxplot
 from napoleon import heatmap
 
 from napoleon import calcSizes
@@ -67,9 +67,9 @@ def test_area():
        color = "symbol")
     assert type(chart) == alt.LayerChart
 
-def test_boxplot():
-    chart = boxplot(data = tameImpala,
-       x = "album_name",
-       y = 'duration_ms',
-       color = "album_release_year")
-    assert type(chart) == alt.LayerChart
+# def test_boxplot():
+#     chart = boxplot(data = tameImpala,
+#        x = "album_name",
+#        y = 'duration_ms',
+#        color = "album_release_year")
+#     assert type(chart) == alt.LayerChart
